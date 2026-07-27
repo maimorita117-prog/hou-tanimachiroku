@@ -3,6 +3,8 @@ const popup = document.querySelector('.map-popup');
 const closeButton = document.querySelector('.popup-close');
 const filterButtons = document.querySelectorAll('.map-filter');
 const propertyItems = document.querySelectorAll('[data-pin-target]');
+const ownerPortrait = document.querySelector('.owner-portrait');
+const ownerPortraitWrap = document.querySelector('.owner-portrait-wrap');
 
 function createMoeLogo() {
   const wrapper = document.createElement('span');
@@ -72,4 +74,19 @@ propertyItems.forEach((item) => item.addEventListener('click', () => {
   document.querySelector('.map-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }));
 
+function toggleOwnerCards() {
+  if (!ownerPortrait || !ownerPortraitWrap) return;
+  const isOpen = ownerPortraitWrap.classList.toggle('cards-open');
+  ownerPortrait.setAttribute('aria-expanded', String(isOpen));
+}
+
+ownerPortrait?.addEventListener('click', toggleOwnerCards);
+ownerPortrait?.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    toggleOwnerCards();
+  }
+});
+
 replaceMoeText();
+
