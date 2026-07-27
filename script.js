@@ -5,6 +5,8 @@ const filterButtons = document.querySelectorAll('.map-filter');
 const propertyItems = document.querySelectorAll('[data-pin-target]');
 const ownerPortrait = document.querySelector('.owner-portrait');
 const ownerPortraitWrap = document.querySelector('.owner-portrait-wrap');
+const ownerCards = document.querySelectorAll('.owner-bubble');
+let ownerCardTimer;
 
 function createMoeLogo() {
   const wrapper = document.createElement('span');
@@ -78,6 +80,19 @@ function toggleOwnerCards() {
   if (!ownerPortrait || !ownerPortraitWrap) return;
   const isOpen = ownerPortraitWrap.classList.toggle('cards-open');
   ownerPortrait.setAttribute('aria-expanded', String(isOpen));
+  window.clearTimeout(ownerCardTimer);
+  ownerCards.forEach((card) => card.classList.remove('is-active'));
+  if (!isOpen) return;
+
+  let cardIndex = 0;
+  const showNextCard = () => {
+    ownerCards.forEach((card, index) => card.classList.toggle('is-active', index === cardIndex));
+    cardIndex += 1;
+    if (cardIndex < ownerCards.length) {
+      ownerCardTimer = window.setTimeout(showNextCard, 2400);
+    }
+  };
+  ownerCardTimer = window.setTimeout(showNextCard, 400);
 }
 
 ownerPortrait?.addEventListener('click', toggleOwnerCards);
