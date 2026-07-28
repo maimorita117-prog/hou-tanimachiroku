@@ -213,7 +213,7 @@ function playOpening() {
   document.body.classList.add('opening-active');
   opening.classList.remove('is-playing');
   window.requestAnimationFrame(() => opening.classList.add('is-playing'));
-  const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1200 : 7600;
+  const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1200 : 7200;
   openingTimer = window.setTimeout(closeOpening, duration);
 }
 
