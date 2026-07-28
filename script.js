@@ -6,6 +6,7 @@ const propertyItems = document.querySelectorAll('[data-pin-target]');
 const ownerPortrait = document.querySelector('.owner-portrait');
 const ownerPortraitWrap = document.querySelector('.owner-portrait-wrap');
 const ownerCards = document.querySelectorAll('.owner-bubble');
+const tenantList = document.querySelector('.moe-tenant-list');
 let ownerCardTimer;
 
 document.querySelectorAll('.moe-logo').forEach((image) => {
@@ -100,6 +101,50 @@ function toggleOwnerCards() {
   ownerCardTimer = window.setTimeout(showNextCard, 400);
 }
 
+function setupTenantDirectory() {
+  if (!tenantList) return;
+  const tenantCards = [...tenantList.querySelectorAll('.moe-tenant')];
+  if (!tenantCards.length) return;
+
+  const picker = document.createElement('div');
+  picker.className = 'moe-tenant-picker';
+  picker.setAttribute('aria-label', '店舗を選ぶ');
+  const label = document.createElement('p');
+  label.className = 'moe-tenant-picker-label';
+  label.textContent = '店舗番号を選ぶ';
+  picker.append(label);
+
+  const buttons = document.createElement('div');
+  buttons.className = 'moe-tenant-number-list';
+  picker.append(buttons);
+
+  const selectTenant = (selectedIndex) => {
+    tenantCards.forEach((card, index) => {
+      const isSelected = index === selectedIndex;
+      card.classList.toggle('is-active', isSelected);
+      card.setAttribute('aria-hidden', String(!isSelected));
+    });
+    [...buttons.children].forEach((button, index) => {
+      const isSelected = index === selectedIndex;
+      button.classList.toggle('active', isSelected);
+      button.setAttribute('aria-pressed', String(isSelected));
+    });
+  };
+
+  tenantCards.forEach((card, index) => {
+    const button = document.createElement('button');
+    const number = String(index + 1).padStart(2, '0');
+    button.type = 'button';
+    button.textContent = number;
+    button.setAttribute('aria-label', `${number} ${card.querySelector('h3')?.textContent ?? '店舗'}`);
+    button.addEventListener('click', () => selectTenant(index));
+    buttons.append(button);
+  });
+
+  tenantList.before(picker);
+  selectTenant(0);
+}
+
 ownerPortrait?.addEventListener('click', toggleOwnerCards);
 ownerPortrait?.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' || event.key === ' ') {
@@ -109,4 +154,5 @@ ownerPortrait?.addEventListener('keydown', (event) => {
 });
 
 replaceMoeText();
+setupTenantDirectory();
 
