@@ -145,6 +145,17 @@ function setupTenantDirectory() {
   selectTenant(0);
 }
 
+function addMoeBuildingPhoto() {
+  const boardTitle = document.querySelector('.moe-board-title');
+  if (!boardTitle) return;
+  boardTitle.querySelector('strong')?.remove();
+  const photo = document.createElement('img');
+  photo.className = 'moe-building-photo';
+  photo.src = 'naoki-building.jpg';
+  photo.alt = '直木三十五記念館が入る複合施設の外観';
+  boardTitle.querySelector('span')?.insertAdjacentElement('afterend', photo);
+}
+
 ownerPortrait?.addEventListener('click', toggleOwnerCards);
 ownerPortrait?.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' || event.key === ' ') {
@@ -155,4 +166,5 @@ ownerPortrait?.addEventListener('keydown', (event) => {
 
 replaceMoeText();
 setupTenantDirectory();
+addMoeBuildingPhoto();
 
