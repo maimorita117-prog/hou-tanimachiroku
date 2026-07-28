@@ -196,7 +196,7 @@ function closeOpening() {
   if (!opening) return;
   window.clearTimeout(openingTimer);
   window.clearTimeout(openingCloseTimer);
-  const exitDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1600;
+  const exitDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1200;
   opening.classList.add('is-closing');
   opening.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('opening-active');
@@ -215,7 +215,7 @@ function playOpening() {
   document.body.classList.add('opening-active');
   opening.classList.remove('is-playing', 'is-closing');
   window.requestAnimationFrame(() => opening.classList.add('is-playing'));
-  const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1200 : 6200;
+  const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1200 : 8800;
   openingTimer = window.setTimeout(closeOpening, duration);
 }
 
