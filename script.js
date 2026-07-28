@@ -7,7 +7,12 @@ const ownerPortrait = document.querySelector('.owner-portrait');
 const ownerPortraitWrap = document.querySelector('.owner-portrait-wrap');
 const ownerCards = document.querySelectorAll('.owner-bubble');
 const tenantList = document.querySelector('.moe-tenant-list');
+const opening = document.querySelector('#opening');
+const openingSkip = document.querySelector('.opening-skip');
+const openingTriggers = document.querySelectorAll('[data-opening-trigger]');
 let ownerCardTimer;
+let openingTimer;
+let openingCloseTimer;
 
 document.querySelectorAll('.moe-logo').forEach((image) => {
   image.src = 'moe-logo.webp';
@@ -187,6 +192,31 @@ function removeEditorialLabels() {
   ].forEach((selector) => document.querySelector(selector)?.remove());
 }
 
+function closeOpening() {
+  if (!opening) return;
+  window.clearTimeout(openingTimer);
+  window.clearTimeout(openingCloseTimer);
+  opening.classList.remove('is-playing');
+  opening.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('opening-active');
+  openingCloseTimer = window.setTimeout(() => {
+    opening.hidden = true;
+  }, 420);
+}
+
+function playOpening() {
+  if (!opening) return;
+  window.clearTimeout(openingTimer);
+  window.clearTimeout(openingCloseTimer);
+  opening.hidden = false;
+  opening.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('opening-active');
+  opening.classList.remove('is-playing');
+  window.requestAnimationFrame(() => opening.classList.add('is-playing'));
+  const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1200 : 7600;
+  openingTimer = window.setTimeout(closeOpening, duration);
+}
+
 ownerPortrait?.addEventListener('click', toggleOwnerCards);
 ownerPortrait?.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' || event.key === ' ') {
@@ -194,10 +224,19 @@ ownerPortrait?.addEventListener('keydown', (event) => {
     toggleOwnerCards();
   }
 });
+openingSkip?.addEventListener('click', closeOpening);
+openingTriggers.forEach((trigger) => trigger.addEventListener('click', (event) => {
+  event.preventDefault();
+  playOpening();
+}));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && opening?.classList.contains('is-playing')) closeOpening();
+});
 
 replaceMoeText();
 setupTenantDirectory();
 addMoeBuildingPhoto();
 addNaokiSign();
 removeEditorialLabels();
+playOpening();
 
