@@ -11,9 +11,24 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <section class="opening" id="opening" aria-hidden="true" hidden>
+    <button class="opening-skip" type="button">本編へ <span>→</span></button>
+    <div class="opening-grain" aria-hidden="true"></div>
+    <div class="opening-inner">
+      <figure class="opening-portrait-frame">
+        <img src="naoki-portrait.webp" alt="作家・直木三十五の肖像">
+      </figure>
+      <div class="opening-story">
+        <p class="opening-kicker">WRITER / NAOKI 35</p>
+        <p class="opening-name" aria-label="直木三十五"><span>直</span><span>木</span><span>三</span><span>十</span><span>五</span></p>
+        <p class="opening-copy">読み継がれる<br>物語の、<br>その始まりへ。</p>
+        <p class="opening-final">物語を、まちへ。</p>
+      </div>
+    </div>
+  </section>
   <div class="site-shell">
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="萌 ホーム">
+      <a class="brand" href="#top" data-opening-trigger aria-label="オープニングを再生">
         <span class="brand-mark"><img class="moe-logo moe-logo-header" src="moe-logo.png" alt="萌"></span><span class="brand-sub">Tanimachi 6-chome / Osaka</span>
       </a>
       <nav class="nav" aria-label="メインナビゲーション">
