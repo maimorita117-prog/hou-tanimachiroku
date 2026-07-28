@@ -156,6 +156,37 @@ function addMoeBuildingPhoto() {
   boardTitle.querySelector('span')?.insertAdjacentElement('afterend', photo);
 }
 
+function addNaokiSign() {
+  const museumCard = document.querySelector('.moe-tenant.is-museum');
+  const heading = museumCard?.querySelector('h3');
+  if (!museumCard || !heading) return;
+  const titleRow = document.createElement('div');
+  titleRow.className = 'naoki-title-row';
+  const sign = document.createElement('img');
+  sign.className = 'naoki-sign';
+  sign.src = 'naoki-sign.webp';
+  sign.alt = '直木三十五記念館の木製看板';
+  heading.before(titleRow);
+  titleRow.append(heading, sign);
+}
+
+function removeEditorialLabels() {
+  [
+    '.hero-street-footer span:first-child',
+    '.hero-street-footer span:last-child',
+    '.moe-building-heading .eyebrow',
+    '.moe-board-title > span',
+    '.moe-note',
+    '.map-section > .section-heading .eyebrow',
+    '.directory-heading .eyebrow',
+    '.rental-callout .eyebrow',
+    '.about-number',
+    '.about > div:nth-child(2) .eyebrow',
+    '.owner-caption',
+    '.places > .section-heading .eyebrow',
+  ].forEach((selector) => document.querySelector(selector)?.remove());
+}
+
 ownerPortrait?.addEventListener('click', toggleOwnerCards);
 ownerPortrait?.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' || event.key === ' ') {
@@ -167,4 +198,6 @@ ownerPortrait?.addEventListener('keydown', (event) => {
 replaceMoeText();
 setupTenantDirectory();
 addMoeBuildingPhoto();
+addNaokiSign();
+removeEditorialLabels();
 
