@@ -8,11 +8,16 @@ const ownerPortraitWrap = document.querySelector('.owner-portrait-wrap');
 const ownerCards = document.querySelectorAll('.owner-bubble');
 let ownerCardTimer;
 
+document.querySelectorAll('.moe-logo').forEach((image) => {
+  image.src = 'moe-logo.webp';
+});
+if (ownerPortrait) ownerPortrait.src = 'owner-smile.webp';
+
 function createMoeLogo() {
   const wrapper = document.createElement('span');
   const image = document.createElement('img');
   wrapper.className = 'moe-inline-logo';
-  image.src = 'moe-logo.png';
+  image.src = 'moe-logo.webp';
   image.alt = '萌';
   wrapper.append(image);
   return wrapper;
