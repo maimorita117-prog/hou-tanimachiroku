@@ -230,6 +230,7 @@ function removeEditorialLabels() {
     '.about > div:nth-child(2) .eyebrow',
     '.owner-caption',
     '.places > .section-heading .eyebrow',
+    '.places > .section-heading .section-intro',
   ].forEach((selector) => document.querySelector(selector)?.remove());
 }
 
