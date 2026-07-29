@@ -39,17 +39,19 @@
     right: 0;
     left: auto;
     width: 100%;
-    font-size: clamp(0.74rem, 3.35vw, 0.92rem);
+    font-size: clamp(0.78rem, 3.5vw, 0.96rem);
     line-height: 1.5;
+    letter-spacing: 0.06em;
   }
 
   .opening-name {
     position: absolute;
     top: 1.9rem;
     right: auto;
-    left: -112%;
+    left: -92%;
     margin: 0;
     font-size: clamp(3.4rem, 13.5vw, 4.35rem);
+    letter-spacing: -0.09em;
     z-index: 2;
   }
 
@@ -58,8 +60,9 @@
     right: 0;
     left: auto;
     max-width: 100%;
-    font-size: clamp(0.68rem, 3.1vw, 0.84rem);
+    font-size: clamp(0.72rem, 3.25vw, 0.88rem);
     line-height: 1.55;
+    letter-spacing: 0.035em;
   }
 
   .opening-final {
@@ -68,8 +71,9 @@
     left: auto;
     width: 100%;
     padding-top: 0.65rem;
-    font-size: clamp(0.7rem, 3.15vw, 0.87rem);
+    font-size: clamp(0.72rem, 3.3vw, 0.9rem);
     line-height: 1.5;
+    letter-spacing: 0.04em;
   }
 
   .opening-actions {
