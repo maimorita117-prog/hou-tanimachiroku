@@ -30,6 +30,10 @@
     padding: 0;
   }
 
+  .opening-kicker {
+    display: none;
+  }
+
   .opening-question {
     top: 0;
     right: 0;
@@ -40,12 +44,15 @@
   }
 
   .opening-name {
-    margin-top: 4.5rem;
+    position: absolute;
+    top: 3.4rem;
+    right: 0;
+    margin: 0;
     font-size: clamp(3.4rem, 15vw, 5rem);
   }
 
   .opening-copy {
-    top: 12.25rem;
+    top: clamp(19rem, 51vw, 22rem);
     right: 0;
     left: auto;
     max-width: 100%;
@@ -97,7 +104,7 @@
   }
 
   .opening-copy {
-    top: 11.4rem;
+    top: 18rem;
   }
 
   .opening-final {
