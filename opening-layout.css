@@ -9,8 +9,8 @@
   .opening-story{top:8%;right:0;width:92%;height:78%}
   .opening-question{top:18px;left:0;font-size:16px;line-height:1.5}
   .opening-copy{top:130px;left:0;max-width:150px;font-size:14px;line-height:1.6}
-  .opening-final{bottom:76px;left:0;width:56%;font-size:14px;line-height:1.5}
-  .opening-actions{bottom:19px;left:0;right:auto}
+  .opening-final{bottom:255px;left:0;width:56%;font-size:14px;line-height:1.5}
+  .opening-actions{bottom:198px;left:0;right:auto}
   .opening-visit,.opening-enter{min-height:35px;padding:7px 8px;font-size:9px}
   .opening-name{margin-top:38px;font-size:clamp(52px,16vw,76px)}
 }
