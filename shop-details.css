@@ -47,18 +47,20 @@
   top: 0.7rem;
   right: 0.7rem;
   z-index: 1;
-  display: grid;
-  width: 2.25rem;
-  height: 2.25rem;
-  place-items: center;
-  padding: 0;
+  display: inline-flex;
+  min-height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.8rem;
   color: #f8efd9;
   background: #315849;
   border: 0;
-  border-radius: 50%;
-  font-size: 1.55rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
   line-height: 1;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .shop-feature__close:hover,
