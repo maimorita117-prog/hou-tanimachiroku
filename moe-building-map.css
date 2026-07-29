@@ -1,12 +1,12 @@
 .moe-building-map {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   max-height: 17rem;
-  margin: 0;
-  object-fit: contain;
-  background: #f4ead4;
-  border: 1px solid rgba(48, 42, 36, 0.5);
-  box-shadow: 5px 5px 0 rgba(48, 42, 36, 0.18);
+  margin: 0 auto;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 @media (max-width: 800px) {
