@@ -21,7 +21,7 @@ let shopFeatureCloseTimer;
 document.querySelectorAll('.moe-logo').forEach((image) => {
   image.src = 'moe-logo.webp';
 });
-if (ownerPortrait) ownerPortrait.src = 'owner-smile.webp';
+if (ownerPortrait) ownerPortrait.src = 'owner-step-left.webp';
 
 function createMoeLogo() {
   const wrapper = document.createElement('span');

@@ -1,11 +1,23 @@
-.owner-portrait-base,
+.owner-portrait-step-left,
+.owner-portrait-step-right,
 .owner-portrait-wave {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.24s ease;
 }
 
-.owner-portrait-base {
+.owner-portrait-step-left {
   z-index: 1;
-  animation-name: owner-greeting-stroll, owner-base-rest;
+  animation-name: owner-greeting-stroll, owner-step-left-display;
+  animation-duration: 20s, 20s;
+  animation-timing-function: cubic-bezier(0.42, 0, 0.24, 1), ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: alternate, normal;
+}
+
+.owner-portrait-step-right {
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  animation-name: owner-greeting-stroll, owner-step-right-display;
   animation-duration: 20s, 20s;
   animation-timing-function: cubic-bezier(0.42, 0, 0.24, 1), ease-in-out;
   animation-iteration-count: infinite, infinite;
@@ -13,7 +25,7 @@
 }
 
 .owner-portrait-wave {
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
   opacity: 0;
   animation-name: owner-greeting-stroll, owner-wave-hello;
@@ -23,17 +35,60 @@
   animation-direction: alternate, normal;
 }
 
-@keyframes owner-base-rest {
+@keyframes owner-step-left-display {
   0%,
-  21%,
-  77%,
-  100% {
+  4%,
+  10%,
+  14% {
     opacity: 1;
   }
 
-  24%,
-  74% {
+  5%,
+  9%,
+  15%,
+  76%,
+  82%,
+  86%,
+  92%,
+  96% {
     opacity: 0;
+  }
+
+  77%,
+  81%,
+  87%,
+  91%,
+  97%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes owner-step-right-display {
+  0%,
+  4%,
+  10%,
+  14%,
+  22%,
+  76%,
+  78%,
+  82%,
+  88%,
+  92%,
+  98%,
+  100% {
+    opacity: 0;
+  }
+
+  5%,
+  9%,
+  15%,
+  21%,
+  83%,
+  87%,
+  93%,
+  97% {
+    opacity: 1;
   }
 }
 
@@ -56,16 +111,20 @@
     transform: translateX(-92%) translateY(0) rotate(-1deg);
   }
 
-  7% {
-    transform: translateX(-80%) translateY(-9px) rotate(1deg);
+  5% {
+    transform: translateX(-83%) translateY(-9px) rotate(1deg);
   }
 
-  14% {
-    transform: translateX(-68%) translateY(0) rotate(-1deg);
+  10% {
+    transform: translateX(-74%) translateY(0) rotate(-1deg);
+  }
+
+  15% {
+    transform: translateX(-65%) translateY(-9px) rotate(1deg);
   }
 
   21% {
-    transform: translateX(-56%) translateY(-7px) rotate(1deg);
+    transform: translateX(-56%) translateY(0) rotate(-1deg);
   }
 
   24%,
@@ -73,16 +132,24 @@
     transform: translateX(-50%) translateY(0) rotate(0);
   }
 
-  81% {
-    transform: translateX(-36%) translateY(-9px) rotate(1deg);
+  79% {
+    transform: translateX(-42%) translateY(-9px) rotate(1deg);
   }
 
-  88% {
-    transform: translateX(-22%) translateY(0) rotate(-1deg);
+  84% {
+    transform: translateX(-34%) translateY(0) rotate(-1deg);
+  }
+
+  89% {
+    transform: translateX(-26%) translateY(-9px) rotate(1deg);
+  }
+
+  94% {
+    transform: translateX(-18%) translateY(0) rotate(-1deg);
   }
 
   100% {
-    transform: translateX(-8%) translateY(-7px) rotate(1deg);
+    transform: translateX(-8%) translateY(-9px) rotate(1deg);
   }
 }
 
@@ -91,16 +158,20 @@
     transform: translateX(-80%) translateY(0) rotate(-1deg);
   }
 
-  7% {
-    transform: translateX(-69%) translateY(-7px) rotate(1deg);
+  5% {
+    transform: translateX(-72%) translateY(-7px) rotate(1deg);
   }
 
-  14% {
-    transform: translateX(-58%) translateY(0) rotate(-1deg);
+  10% {
+    transform: translateX(-64%) translateY(0) rotate(-1deg);
+  }
+
+  15% {
+    transform: translateX(-56%) translateY(-7px) rotate(1deg);
   }
 
   21% {
-    transform: translateX(-47%) translateY(-6px) rotate(1deg);
+    transform: translateX(-48%) translateY(0) rotate(-1deg);
   }
 
   24%,
@@ -108,12 +179,20 @@
     transform: translateX(-42%) translateY(0) rotate(0);
   }
 
-  81% {
-    transform: translateX(-31%) translateY(-7px) rotate(1deg);
+  79% {
+    transform: translateX(-34%) translateY(-7px) rotate(1deg);
   }
 
-  88% {
-    transform: translateX(-22%) translateY(0) rotate(-1deg);
+  84% {
+    transform: translateX(-28%) translateY(0) rotate(-1deg);
+  }
+
+  89% {
+    transform: translateX(-22%) translateY(-7px) rotate(1deg);
+  }
+
+  94% {
+    transform: translateX(-17%) translateY(0) rotate(-1deg);
   }
 
   100% {
@@ -122,22 +201,28 @@
 }
 
 @media (max-width: 800px) {
-  .owner-portrait-base {
-    animation-name: owner-greeting-stroll-mobile, owner-base-rest;
+  .owner-portrait-step-left,
+  .owner-portrait-step-right,
+  .owner-portrait-wave {
+    animation-name: owner-greeting-stroll-mobile, owner-step-left-display;
     animation-duration: 20s, 20s;
+  }
+
+  .owner-portrait-step-right {
+    animation-name: owner-greeting-stroll-mobile, owner-step-right-display;
   }
 
   .owner-portrait-wave {
     animation-name: owner-greeting-stroll-mobile, owner-wave-hello;
-    animation-duration: 20s, 20s;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .owner-portrait-base {
+  .owner-portrait-step-left {
     animation: none;
   }
 
+  .owner-portrait-step-right,
   .owner-portrait-wave {
     display: none;
   }
