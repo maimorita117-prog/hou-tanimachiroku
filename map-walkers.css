@@ -2,7 +2,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  width: min(28vw, 18rem);
+  width: min(37vw, 26rem);
   min-height: 6.2rem;
   padding: 0.35rem 0.5rem 0;
   border-bottom: 2px solid rgba(244, 234, 212, 0.7);
@@ -20,7 +20,7 @@
 }
 
 .map-walker {
-  width: clamp(3.25rem, 5.6vw, 4.45rem);
+  width: clamp(2.8rem, 4.7vw, 3.85rem);
   height: auto;
   overflow: visible;
   filter: drop-shadow(2px 3px 0 rgba(16, 31, 23, 0.28));
@@ -45,7 +45,22 @@
 }
 
 .walker-person-two {
+  margin-right: -0.45rem;
   animation-delay: -0.2s;
+}
+
+.walker-dog {
+  margin-right: -0.45rem;
+  animation-delay: -0.72s;
+}
+
+.walker-person-three {
+  margin-right: -0.45rem;
+  animation-delay: -1.15s;
+}
+
+.walker-person-four {
+  animation-delay: -0.36s;
 }
 
 @keyframes map-walker-stroll {
@@ -61,13 +76,13 @@
 
 @media (max-width: 800px) {
   .map-walkers {
-    width: min(17rem, 72vw);
+    width: min(20rem, 92vw);
     min-height: 5.5rem;
     margin: 1rem 0 0 auto;
   }
 
   .map-walker {
-    width: clamp(2.9rem, 15vw, 3.75rem);
+    width: clamp(2.55rem, 13vw, 3.35rem);
   }
 }
 
