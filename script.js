@@ -194,6 +194,12 @@ function addMoeBuildingPhoto() {
   photo.src = 'naoki-building.jpg';
   photo.alt = '直木三十五記念館が入る複合施設の外観';
   boardTitle.querySelector('span')?.insertAdjacentElement('afterend', photo);
+
+  const buildingMap = document.createElement('img');
+  buildingMap.className = 'moe-building-map';
+  buildingMap.src = 'assets/moe-building-map.jpg';
+  buildingMap.alt = '複合施設「萌」の建物案内図';
+  photo.insertAdjacentElement('afterend', buildingMap);
 }
 
 function addNaokiSign() {
