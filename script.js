@@ -59,7 +59,7 @@ function replaceMoeText(root = document.body) {
 function openShopFeature() {
   if (!shopFeature) return false;
   window.clearTimeout(shopFeatureCloseTimer);
-  shopFeature.hidden = false;
+  shopFeature.setAttribute('aria-hidden', 'false');
   document.body.classList.add('shop-feature-open');
   window.requestAnimationFrame(() => shopFeature.classList.add('is-open'));
   window.requestAnimationFrame(() => shopFeatureClose?.focus());
@@ -67,13 +67,14 @@ function openShopFeature() {
 }
 
 function closeShopFeature() {
-  if (!shopFeature || shopFeature.hidden) return;
+  if (!shopFeature) return;
   shopFeature.classList.remove('is-open');
+  shopFeature.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('shop-feature-open');
   window.clearTimeout(shopFeatureCloseTimer);
-  shopFeatureCloseTimer = window.setTimeout(() => {
-    shopFeature.hidden = true;
-  }, 280);
+  if (window.location.hash === '#kanmiho') {
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+  }
 }
 
 function showPin(pin) {
@@ -280,4 +281,5 @@ setupTenantDirectory();
 addMoeBuildingPhoto();
 addNaokiSign();
 removeEditorialLabels();
+if (window.location.hash === '#kanmiho') openShopFeature();
 playOpening();
