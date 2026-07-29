@@ -1,0 +1,106 @@
+@media (max-width: 800px) {
+  .opening-inner {
+    display: block;
+    width: min(92vw, 34rem);
+    height: calc(100svh - 2rem);
+    padding-top: 3.75rem;
+  }
+
+  .opening-portrait-frame {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: min(49vw, 18rem);
+    max-height: 59svh;
+  }
+
+  .opening-portrait-frame img {
+    width: 100%;
+    height: min(59svh, 29rem);
+    max-height: none;
+    object-position: center bottom;
+  }
+
+  .opening-story {
+    top: 10%;
+    right: 0;
+    width: 49%;
+    height: 78%;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .opening-question {
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 100%;
+    font-size: clamp(0.78rem, 3.8vw, 1rem);
+    line-height: 1.5;
+  }
+
+  .opening-name {
+    margin-top: 4.5rem;
+    font-size: clamp(3.4rem, 15vw, 5rem);
+  }
+
+  .opening-copy {
+    top: 12.25rem;
+    right: 0;
+    left: auto;
+    max-width: 100%;
+    font-size: clamp(0.72rem, 3.45vw, 0.92rem);
+    line-height: 1.55;
+  }
+
+  .opening-final {
+    right: 0;
+    bottom: 7.25rem;
+    left: auto;
+    width: 100%;
+    padding-top: 0.65rem;
+    font-size: clamp(0.75rem, 3.6vw, 0.95rem);
+    line-height: 1.5;
+  }
+
+  .opening-actions {
+    right: 0;
+    bottom: 0.75rem;
+    left: auto;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+  }
+
+  .opening-visit,
+  .opening-enter {
+    justify-content: space-between;
+    min-height: 2.3rem;
+    padding: 0.45rem 0.55rem;
+    font-size: clamp(0.56rem, 2.65vw, 0.68rem);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .opening-inner {
+    width: 94vw;
+  }
+
+  .opening-portrait-frame {
+    width: 47vw;
+  }
+
+  .opening-story {
+    width: 51%;
+  }
+
+  .opening-copy {
+    top: 11.4rem;
+  }
+
+  .opening-final {
+    bottom: 6.8rem;
+  }
+}
