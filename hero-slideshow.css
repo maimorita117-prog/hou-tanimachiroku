@@ -1,0 +1,107 @@
+.hero-slides {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  background: #47656c;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: -2%;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  will-change: opacity, transform;
+}
+
+.hero-slide-memorial {
+  background-image: url('hero-naoki-memorial.jpg');
+  animation: hero-slide-memorial 16s ease-in-out infinite;
+}
+
+.hero-slide-machiya {
+  background-image: url('hero-street-machiya.jpg');
+  animation: hero-slide-machiya 16s ease-in-out infinite;
+}
+
+.hero-street-wash {
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 35, 30, 0.55) 0%,
+    rgba(20, 35, 30, 0.1) 42%,
+    rgba(20, 35, 30, 0.16) 67%,
+    rgba(20, 35, 30, 0.44) 100%
+  );
+}
+
+.hero-street-heading {
+  z-index: 4;
+}
+
+@keyframes hero-slide-memorial {
+  0%,
+  42% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  50%,
+  92% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes hero-slide-machiya {
+  0%,
+  42% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+
+  50%,
+  92% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+@media (max-width: 800px) {
+  .hero-slide-memorial {
+    background-image: url('hero-naoki-memorial-mobile.jpg');
+    background-position: center center;
+  }
+
+  .hero-slide-machiya {
+    background-image: url('hero-street-mobile-machiya.jpg');
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    animation: none;
+    transform: none;
+  }
+
+  .hero-slide-memorial {
+    opacity: 1;
+  }
+
+  .hero-slide-machiya {
+    display: none;
+  }
+}
