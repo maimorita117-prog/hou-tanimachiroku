@@ -1,0 +1,22 @@
+@media (min-width: 801px) {
+  .topbar .nav {
+    gap: 2.6rem;
+  }
+
+  .topbar .nav a,
+  .topbar .contact-link {
+    font-size: 1.06rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .topbar .nav a {
+    min-height: 2.55rem;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+  }
+
+  .topbar .contact-link {
+    font-size: 0.75rem;
+  }
+}
