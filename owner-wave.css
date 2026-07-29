@@ -1,0 +1,74 @@
+.owner-portrait-base,
+.owner-portrait-wave {
+  transition: opacity 0.3s ease;
+}
+
+.owner-portrait-base {
+  z-index: 1;
+  animation-name: owner-stroll, owner-base-rest;
+  animation-duration: 9.6s, 9.6s;
+  animation-timing-function: cubic-bezier(0.42, 0, 0.24, 1), ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: alternate, normal;
+}
+
+.owner-portrait-wave {
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  animation-name: owner-stroll, owner-wave-hello;
+  animation-duration: 9.6s, 9.6s;
+  animation-timing-function: cubic-bezier(0.42, 0, 0.24, 1), ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: alternate, normal;
+}
+
+@keyframes owner-base-rest {
+  0%,
+  37%,
+  58%,
+  100% {
+    opacity: 1;
+  }
+
+  41%,
+  54% {
+    opacity: 0;
+  }
+}
+
+@keyframes owner-wave-hello {
+  0%,
+  37%,
+  58%,
+  100% {
+    opacity: 0;
+  }
+
+  41%,
+  54% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 800px) {
+  .owner-portrait-base {
+    animation-name: owner-stroll-mobile, owner-base-rest;
+    animation-duration: 8.8s, 8.8s;
+  }
+
+  .owner-portrait-wave {
+    animation-name: owner-stroll-mobile, owner-wave-hello;
+    animation-duration: 8.8s, 8.8s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .owner-portrait-base {
+    animation: none;
+  }
+
+  .owner-portrait-wave {
+    display: none;
+  }
+}
