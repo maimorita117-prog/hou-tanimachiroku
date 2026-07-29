@@ -45,10 +45,12 @@
 
   .opening-name {
     position: absolute;
-    top: 3.9rem;
-    right: 0;
+    top: 1.9rem;
+    right: auto;
+    left: -112%;
     margin: 0;
-    font-size: clamp(2.8rem, 11vw, 3.5rem);
+    font-size: clamp(3.4rem, 13.5vw, 4.35rem);
+    z-index: 2;
   }
 
   .opening-copy {
@@ -117,8 +119,8 @@
   }
 
   .opening-name {
-    top: 3.25rem;
-    font-size: clamp(2.35rem, 10vw, 3.05rem);
+    top: 1.45rem;
+    font-size: clamp(2.65rem, 10.8vw, 3.35rem);
   }
 
   .opening-copy {
