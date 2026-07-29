@@ -1,0 +1,44 @@
+/* A soft, lingering handoff from the opening film to the main page. */
+.opening.is-playing.is-closing {
+  opacity: 0;
+  filter: saturate(0.92) brightness(1.08);
+  transition: opacity 2.8s cubic-bezier(0.22, 0.61, 0.36, 1), filter 2.8s ease;
+}
+
+.opening.is-closing::after {
+  opacity: 0.76;
+  background: radial-gradient(
+    circle at 52% 44%,
+    rgba(244, 234, 212, 0.62),
+    rgba(216, 170, 87, 0.18) 33%,
+    rgba(11, 16, 13, 0.86) 86%
+  );
+  transition: opacity 0.85s ease;
+}
+
+.opening-inner,
+.opening-grain {
+  transition:
+    opacity 2.15s ease,
+    transform 2.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+    filter 2.15s ease;
+}
+
+.opening.is-closing .opening-inner {
+  opacity: 0;
+  transform: translateY(-0.9rem) scale(1.025);
+  filter: blur(4px);
+}
+
+.opening.is-closing .opening-grain {
+  opacity: 0.08;
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opening.is-playing.is-closing,
+  .opening.is-closing .opening-inner,
+  .opening.is-closing .opening-grain {
+    transition: none;
+  }
+}

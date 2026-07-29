@@ -238,7 +238,7 @@ function closeOpening() {
   if (!opening) return;
   window.clearTimeout(openingTimer);
   window.clearTimeout(openingCloseTimer);
-  const exitDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1200;
+  const exitDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 2800;
   opening.classList.add('is-closing');
   opening.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('opening-active');
