@@ -9,10 +9,13 @@ const ownerCards = document.querySelectorAll('.owner-bubble');
 const tenantList = document.querySelector('.moe-tenant-list');
 const opening = document.querySelector('#opening');
 const openingSkip = document.querySelector('.opening-skip');
+const openingAudio = document.querySelector('.opening-audio');
+const openingEnter = document.querySelector('.opening-enter');
 const openingTriggers = document.querySelectorAll('[data-opening-trigger]');
 let ownerCardTimer;
 let openingTimer;
 let openingCloseTimer;
+let openingSpeech;
 
 document.querySelectorAll('.moe-logo').forEach((image) => {
   image.src = 'moe-logo.webp';
@@ -196,6 +199,9 @@ function closeOpening() {
   if (!opening) return;
   window.clearTimeout(openingTimer);
   window.clearTimeout(openingCloseTimer);
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  openingAudio?.classList.remove('is-speaking');
+  openingAudio?.setAttribute('aria-pressed', 'false');
   const exitDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1200;
   opening.classList.add('is-closing');
   opening.setAttribute('aria-hidden', 'true');
@@ -215,8 +221,26 @@ function playOpening() {
   document.body.classList.add('opening-active');
   opening.classList.remove('is-playing', 'is-closing');
   window.requestAnimationFrame(() => opening.classList.add('is-playing'));
-  const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1200 : 8800;
+  const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1200 : 10000;
   openingTimer = window.setTimeout(closeOpening, duration);
+}
+
+function speakOpeningNarration() {
+  if (!('speechSynthesis' in window) || !openingAudio) return;
+  window.speechSynthesis.cancel();
+  openingSpeech = new SpeechSynthesisUtterance('直木賞の名は、知っている。では、直木三十五という人を、知っていますか。大阪、空堀で生まれ育った作家の足跡を、記念館でたずねてみませんか。');
+  openingSpeech.lang = 'ja-JP';
+  openingSpeech.rate = 1.08;
+  openingSpeech.pitch = .92;
+  const japaneseVoice = window.speechSynthesis.getVoices().find((voice) => voice.lang.startsWith('ja'));
+  if (japaneseVoice) openingSpeech.voice = japaneseVoice;
+  openingAudio.classList.add('is-speaking');
+  openingAudio.setAttribute('aria-pressed', 'true');
+  openingSpeech.onend = openingSpeech.onerror = () => {
+    openingAudio.classList.remove('is-speaking');
+    openingAudio.setAttribute('aria-pressed', 'false');
+  };
+  window.speechSynthesis.speak(openingSpeech);
 }
 
 ownerPortrait?.addEventListener('click', toggleOwnerCards);
@@ -227,6 +251,8 @@ ownerPortrait?.addEventListener('keydown', (event) => {
   }
 });
 openingSkip?.addEventListener('click', closeOpening);
+openingEnter?.addEventListener('click', closeOpening);
+openingAudio?.addEventListener('click', speakOpeningNarration);
 openingTriggers.forEach((trigger) => trigger.addEventListener('click', (event) => {
   event.preventDefault();
   playOpening();
