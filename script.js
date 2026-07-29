@@ -1,6 +1,8 @@
 const pins = document.querySelectorAll('.map-pin');
 const popup = document.querySelector('.map-popup');
 const closeButton = document.querySelector('.popup-close');
+const shopFeature = document.querySelector('#kanmiho');
+const shopFeatureClose = document.querySelector('.shop-feature__close');
 const filterButtons = document.querySelectorAll('.map-filter');
 const propertyItems = document.querySelectorAll('[data-pin-target]');
 const ownerPortrait = document.querySelector('.owner-portrait');
@@ -14,6 +16,7 @@ const openingTriggers = document.querySelectorAll('[data-opening-trigger]');
 let ownerCardTimer;
 let openingTimer;
 let openingCloseTimer;
+let shopFeatureCloseTimer;
 
 document.querySelectorAll('.moe-logo').forEach((image) => {
   image.src = 'moe-logo.webp';
@@ -53,9 +56,34 @@ function replaceMoeText(root = document.body) {
   });
 }
 
+function openShopFeature() {
+  if (!shopFeature) return false;
+  window.clearTimeout(shopFeatureCloseTimer);
+  shopFeature.hidden = false;
+  document.body.classList.add('shop-feature-open');
+  window.requestAnimationFrame(() => shopFeature.classList.add('is-open'));
+  window.requestAnimationFrame(() => shopFeatureClose?.focus());
+  return true;
+}
+
+function closeShopFeature() {
+  if (!shopFeature || shopFeature.hidden) return;
+  shopFeature.classList.remove('is-open');
+  document.body.classList.remove('shop-feature-open');
+  window.clearTimeout(shopFeatureCloseTimer);
+  shopFeatureCloseTimer = window.setTimeout(() => {
+    shopFeature.hidden = true;
+  }, 280);
+}
+
 function showPin(pin) {
   pins.forEach((item) => item.classList.remove('selected'));
   pin.classList.add('selected');
+  if (pin.dataset.id === '02' && openShopFeature()) {
+    popup.classList.remove('open');
+    return;
+  }
+  closeShopFeature();
   popup.querySelector('.popup-kicker').textContent = `PIN ${pin.querySelector('span').textContent}`;
   popup.querySelector('h3').textContent = pin.dataset.title;
   popup.querySelector('p').textContent = pin.dataset.text;
@@ -70,6 +98,11 @@ pins.forEach((pin) => pin.addEventListener('click', () => showPin(pin)));
 closeButton.addEventListener('click', () => {
   popup.classList.remove('open');
   pins.forEach((item) => item.classList.remove('selected'));
+});
+
+shopFeatureClose?.addEventListener('click', closeShopFeature);
+shopFeature?.addEventListener('click', (event) => {
+  if (event.target === shopFeature) closeShopFeature();
 });
 
 filterButtons.forEach((button) => button.addEventListener('click', () => {
@@ -234,7 +267,12 @@ openingTriggers.forEach((trigger) => trigger.addEventListener('click', (event) =
   playOpening();
 }));
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && opening?.classList.contains('is-playing')) closeOpening();
+  if (event.key !== 'Escape') return;
+  if (shopFeature?.classList.contains('is-open')) {
+    closeShopFeature();
+    return;
+  }
+  if (opening?.classList.contains('is-playing')) closeOpening();
 });
 
 replaceMoeText();
@@ -243,4 +281,3 @@ addMoeBuildingPhoto();
 addNaokiSign();
 removeEditorialLabels();
 playOpening();
-
