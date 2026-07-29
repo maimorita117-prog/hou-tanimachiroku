@@ -1,0 +1,78 @@
+.map-walkers {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: min(28vw, 18rem);
+  min-height: 6.2rem;
+  padding: 0.35rem 0.5rem 0;
+  border-bottom: 2px solid rgba(244, 234, 212, 0.7);
+}
+
+.map-walkers::before {
+  content: 'てくてく';
+  align-self: flex-start;
+  margin: 0.35rem 0.25rem 0 0;
+  color: #d0b16a;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.04em;
+  transform: rotate(-7deg);
+}
+
+.map-walker {
+  width: clamp(3.25rem, 5.6vw, 4.45rem);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(2px 3px 0 rgba(16, 31, 23, 0.28));
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: map-walker-stroll 1.35s ease-in-out infinite;
+}
+
+.map-walker g {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.walker-cat {
+  margin-right: -0.45rem;
+  animation-delay: -0.5s;
+}
+
+.walker-person-one {
+  margin-right: -0.55rem;
+  animation-delay: -0.95s;
+}
+
+.walker-person-two {
+  animation-delay: -0.2s;
+}
+
+@keyframes map-walker-stroll {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-0.36rem) rotate(2deg);
+  }
+}
+
+@media (max-width: 800px) {
+  .map-walkers {
+    width: min(17rem, 72vw);
+    min-height: 5.5rem;
+    margin: 1rem 0 0 auto;
+  }
+
+  .map-walker {
+    width: clamp(2.9rem, 15vw, 3.75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-walker {
+    animation: none;
+  }
+}
