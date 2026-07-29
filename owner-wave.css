@@ -5,8 +5,8 @@
 
 .owner-portrait-base {
   z-index: 1;
-  animation-name: owner-stroll, owner-base-rest;
-  animation-duration: 9.6s, 9.6s;
+  animation-name: owner-greeting-stroll, owner-base-rest;
+  animation-duration: 20s, 20s;
   animation-timing-function: cubic-bezier(0.42, 0, 0.24, 1), ease-in-out;
   animation-iteration-count: infinite, infinite;
   animation-direction: alternate, normal;
@@ -16,8 +16,8 @@
   z-index: 2;
   pointer-events: none;
   opacity: 0;
-  animation-name: owner-stroll, owner-wave-hello;
-  animation-duration: 9.6s, 9.6s;
+  animation-name: owner-greeting-stroll, owner-wave-hello;
+  animation-duration: 20s, 20s;
   animation-timing-function: cubic-bezier(0.42, 0, 0.24, 1), ease-in-out;
   animation-iteration-count: infinite, infinite;
   animation-direction: alternate, normal;
@@ -25,41 +25,111 @@
 
 @keyframes owner-base-rest {
   0%,
-  37%,
-  58%,
+  21%,
+  77%,
   100% {
     opacity: 1;
   }
 
-  41%,
-  54% {
+  24%,
+  74% {
     opacity: 0;
   }
 }
 
 @keyframes owner-wave-hello {
   0%,
-  37%,
-  58%,
+  21%,
+  77%,
   100% {
     opacity: 0;
   }
 
-  41%,
-  54% {
+  24%,
+  74% {
     opacity: 1;
+  }
+}
+
+@keyframes owner-greeting-stroll {
+  0% {
+    transform: translateX(-92%) translateY(0) rotate(-1deg);
+  }
+
+  7% {
+    transform: translateX(-80%) translateY(-9px) rotate(1deg);
+  }
+
+  14% {
+    transform: translateX(-68%) translateY(0) rotate(-1deg);
+  }
+
+  21% {
+    transform: translateX(-56%) translateY(-7px) rotate(1deg);
+  }
+
+  24%,
+  74% {
+    transform: translateX(-50%) translateY(0) rotate(0);
+  }
+
+  81% {
+    transform: translateX(-36%) translateY(-9px) rotate(1deg);
+  }
+
+  88% {
+    transform: translateX(-22%) translateY(0) rotate(-1deg);
+  }
+
+  100% {
+    transform: translateX(-8%) translateY(-7px) rotate(1deg);
+  }
+}
+
+@keyframes owner-greeting-stroll-mobile {
+  0% {
+    transform: translateX(-80%) translateY(0) rotate(-1deg);
+  }
+
+  7% {
+    transform: translateX(-69%) translateY(-7px) rotate(1deg);
+  }
+
+  14% {
+    transform: translateX(-58%) translateY(0) rotate(-1deg);
+  }
+
+  21% {
+    transform: translateX(-47%) translateY(-6px) rotate(1deg);
+  }
+
+  24%,
+  74% {
+    transform: translateX(-42%) translateY(0) rotate(0);
+  }
+
+  81% {
+    transform: translateX(-31%) translateY(-7px) rotate(1deg);
+  }
+
+  88% {
+    transform: translateX(-22%) translateY(0) rotate(-1deg);
+  }
+
+  100% {
+    transform: translateX(-14%) translateY(-7px) rotate(1deg);
   }
 }
 
 @media (max-width: 800px) {
   .owner-portrait-base {
-    animation-name: owner-stroll-mobile, owner-base-rest;
-    animation-duration: 8.8s, 8.8s;
+    animation-name: owner-greeting-stroll-mobile, owner-base-rest;
+    animation-duration: 20s, 20s;
   }
 
   .owner-portrait-wave {
-    animation-name: owner-stroll-mobile, owner-wave-hello;
-    animation-duration: 8.8s, 8.8s;
+    animation-name: owner-greeting-stroll-mobile, owner-wave-hello;
+    animation-duration: 20s, 20s;
   }
 }
 

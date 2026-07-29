@@ -9,6 +9,33 @@
   }
 }
 
+.topbar .contact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.65rem;
+  padding: 0.55rem 1.05rem;
+  border: 1px solid rgba(255, 247, 232, 0.72);
+  border-radius: 999px;
+  background: rgba(121, 43, 54, 0.78);
+  box-shadow: 2px 3px 0 rgba(48, 42, 36, 0.22);
+  color: #fff7e8;
+  line-height: 1.2;
+  text-shadow: 0 1px 0 rgba(45, 18, 23, 0.42);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.topbar .contact-link:hover,
+.topbar .contact-link:focus-visible {
+  background: rgba(145, 47, 61, 0.92);
+  box-shadow: 1px 1px 0 rgba(48, 42, 36, 0.2);
+  color: #fff7e8;
+  outline: none;
+  transform: translate(1px, 1px);
+}
+
 @media (max-width: 800px) {
   .topbar .nav a {
     min-height: 2.55rem;
@@ -17,6 +44,8 @@
   }
 
   .topbar .contact-link {
+    min-height: 2.35rem;
+    padding: 0.45rem 0.78rem;
     font-size: 0.75rem;
   }
 }
