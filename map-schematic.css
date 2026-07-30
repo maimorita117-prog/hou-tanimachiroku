@@ -292,6 +292,10 @@
   stroke: none;
 }
 
+.map-schematic .park-trees {
+  pointer-events: none;
+}
+
 .map-schematic .tree-leaf {
   fill: #6f9a61;
   stroke: #355b3d;
