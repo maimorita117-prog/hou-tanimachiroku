@@ -39,10 +39,11 @@
   margin: 0;
   color: #fff8e9;
   font-family: Georgia, 'Yu Mincho', 'Hiragino Mincho ProN', serif;
-  font-size: clamp(48px, 5.8vw, 88px);
+  font-size: clamp(42px, 4.5vw, 72px);
   font-weight: 700;
   line-height: 1.18;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
+  white-space: nowrap;
   text-shadow: 3px 4px 0 rgba(21, 31, 26, 0.46);
 }
 
@@ -184,7 +185,7 @@
   }
 
   .hero-memorial-copy h1 {
-    font-size: clamp(39px, 10.5vw, 53px);
+    font-size: clamp(32px, 8vw, 46px);
     line-height: 1.2;
   }
 

@@ -24,6 +24,41 @@
     filter 2.15s ease;
 }
 
+.opening-portrait-frame {
+  clip-path: inset(0);
+  opacity: 0;
+  filter: blur(10px) brightness(0.72);
+  transform: scale(0.68);
+  transform-origin: 50% 72%;
+  will-change: opacity, transform, filter;
+}
+
+.opening.is-playing .opening-portrait-frame {
+  animation: opening-portrait-depth-in 2.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+@keyframes opening-portrait-depth-in {
+  0% {
+    clip-path: inset(0);
+    opacity: 0;
+    filter: blur(11px) brightness(0.68);
+    transform: scale(0.68);
+  }
+
+  62% {
+    opacity: 0.94;
+    filter: blur(1.2px) brightness(0.97);
+    transform: scale(1.025);
+  }
+
+  100% {
+    clip-path: inset(0);
+    opacity: 1;
+    filter: blur(0) brightness(1);
+    transform: scale(1);
+  }
+}
+
 .opening.is-closing .opening-inner {
   opacity: 0;
   transform: translateY(-0.9rem) scale(1.025);
@@ -36,6 +71,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .opening-portrait-frame {
+    clip-path: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
   .opening.is-playing.is-closing,
   .opening.is-closing .opening-inner,
   .opening.is-closing .opening-grain {
