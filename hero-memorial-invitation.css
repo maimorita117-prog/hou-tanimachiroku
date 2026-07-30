@@ -7,7 +7,7 @@
   position: absolute;
   z-index: 0;
   inset: 0;
-  background: #354b40 url('hero-naoki-memorial.jpg') center center / contain no-repeat;
+  background: #354b40 url('hero-naoki-memorial-v2.png') center center / cover no-repeat;
 }
 
 .hero-memorial .hero-street-wash {
@@ -159,9 +159,9 @@
 
   .hero-memorial-scene {
     inset: 0;
-    background-image: url('hero-naoki-memorial-mobile.jpg');
+    background-image: url('hero-naoki-memorial-mobile-v2.png');
     background-position: center center;
-    background-size: contain;
+    background-size: cover;
   }
 
   .hero-memorial .hero-street-wash {
