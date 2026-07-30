@@ -1,0 +1,707 @@
+.moe-building {
+  --moe-deep-green: #29483b;
+  --moe-green: #3f5b4d;
+  --moe-paper: #f4ead4;
+  --moe-cream: #e7d8b6;
+  --moe-gold: #d0a542;
+  --moe-bordeaux: #9c3d2e;
+}
+
+.moe-building::before {
+  content: "MOE / 3 FLOORS / 10 DOORS";
+}
+
+.moe-explorer {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.62fr) minmax(0, 1.75fr);
+  border: 2px solid var(--moe-deep-green);
+  background: var(--moe-deep-green);
+  box-shadow: 11px 12px 0 rgba(48, 42, 36, 0.2);
+}
+
+.moe-explorer-guide {
+  position: relative;
+  z-index: 2;
+  padding: clamp(24px, 3vw, 40px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 75% 8%, rgba(208, 165, 66, 0.22) 0 2px, transparent 3px),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 48%),
+    var(--moe-deep-green);
+  background-size: 31px 31px, auto, auto;
+  color: var(--moe-paper);
+}
+
+.moe-explorer-guide::after {
+  content: "";
+  position: absolute;
+  right: -42px;
+  bottom: -55px;
+  width: 145px;
+  height: 145px;
+  border: 2px dashed rgba(208, 165, 66, 0.38);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.moe-explorer-kicker {
+  margin: 0 0 10px;
+  color: #d8b861;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.moe-explorer-guide h3 {
+  margin: 0;
+  color: var(--moe-paper);
+  font-size: clamp(31px, 3vw, 47px);
+  line-height: 1.2;
+}
+
+.moe-explorer-help {
+  max-width: 20rem;
+  margin: 16px 0 24px;
+  color: #d4dccf;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.moe-explorer-visuals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 15px;
+}
+
+.moe-explorer-photo,
+.moe-explorer-map {
+  position: relative;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(244, 234, 212, 0.62);
+  background: var(--moe-paper);
+  box-shadow: 5px 6px 0 rgba(16, 30, 24, 0.35);
+  color: var(--moe-deep-green);
+  text-decoration: none;
+  transform: rotate(-0.6deg);
+}
+
+.moe-explorer-map {
+  transform: rotate(0.7deg);
+}
+
+.moe-explorer-photo img,
+.moe-explorer-map img {
+  display: block;
+  width: 100%;
+  height: 190px;
+}
+
+.moe-explorer-photo img {
+  object-fit: cover;
+}
+
+.moe-explorer-map img {
+  object-fit: contain;
+  background: var(--moe-paper);
+}
+
+.moe-explorer-photo figcaption,
+.moe-explorer-map span {
+  display: block;
+  padding: 7px 10px;
+  border-top: 1px solid rgba(41, 72, 59, 0.32);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+}
+
+.moe-explorer-map:hover {
+  transform: rotate(0) translateY(-3px);
+}
+
+.moe-explorer-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 12px 13px;
+  border: 1px dashed rgba(244, 234, 212, 0.5);
+  color: #dce2d5;
+  transform: rotate(-1deg);
+}
+
+.moe-explorer-note > span {
+  color: #d8b861;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.moe-explorer-note p {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.moe-explorer-note strong {
+  display: block;
+  color: var(--moe-paper);
+  font-size: 12px;
+}
+
+.moe-floor-stack {
+  position: relative;
+  padding: clamp(28px, 3vw, 46px) clamp(19px, 2.8vw, 42px) 18px;
+  background:
+    linear-gradient(90deg, rgba(66, 50, 33, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(66, 50, 33, 0.035) 1px, transparent 1px),
+    #eadcbe;
+  background-size: 34px 34px;
+}
+
+.moe-floor-stack::before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: 3%;
+  right: 3%;
+  height: 18px;
+  border: 2px solid var(--moe-deep-green);
+  border-bottom-width: 5px;
+  background: #6b5540;
+  clip-path: polygon(3% 100%, 0 45%, 50% 0, 100% 45%, 97% 100%);
+}
+
+.moe-floor {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(105px, 10vw, 145px) minmax(0, 1fr);
+  min-width: 0;
+  border: 2px solid var(--moe-deep-green);
+  border-bottom-width: 8px;
+  background: rgba(244, 234, 212, 0.82);
+  box-shadow: 4px 5px 0 rgba(48, 42, 36, 0.14);
+}
+
+.moe-floor + .moe-floor {
+  margin-top: 11px;
+}
+
+.moe-floor::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, #6b5540 0 28px, #493b31 28px 30px);
+}
+
+.moe-floor-sign {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px 13px;
+  border-right: 2px solid var(--moe-deep-green);
+  background: var(--moe-green);
+  color: var(--moe-paper);
+}
+
+.moe-floor-sign > span {
+  align-self: flex-start;
+  min-width: 52px;
+  margin-bottom: 13px;
+  padding: 4px 8px;
+  border: 1px solid #d8b861;
+  background: #233f34;
+  color: #d8b861;
+  font-family: var(--mono);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  transform: rotate(-2deg);
+}
+
+.moe-floor-sign strong {
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.moe-floor-sign small {
+  margin-top: 7px;
+  color: #cad4c7;
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.moe-floor-rooms {
+  display: grid;
+  align-items: start;
+  gap: 10px;
+  min-width: 0;
+  padding: 13px;
+}
+
+.moe-floor-rooms-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.moe-floor-rooms-four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.moe-room {
+  position: relative;
+  min-width: 0;
+  color: #3e342b;
+}
+
+.moe-room summary {
+  position: relative;
+  min-height: 145px;
+  padding: 38px 14px 15px;
+  overflow: hidden;
+  border: 2px solid #4a4035;
+  background:
+    linear-gradient(90deg, transparent 48%, rgba(255, 255, 255, 0.12) 49% 51%, transparent 52%),
+    linear-gradient(#8a6a48, #6e5037);
+  box-shadow:
+    inset 0 0 0 7px rgba(48, 36, 28, 0.18),
+    3px 4px 0 rgba(48, 42, 36, 0.2);
+  color: #fff5de;
+  cursor: pointer;
+  list-style: none;
+  transform-origin: left center;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+}
+
+.moe-room summary::-webkit-details-marker {
+  display: none;
+}
+
+.moe-room summary::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 55%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #4b3927;
+  border-radius: 50%;
+  background: #e1bb58;
+  box-shadow: 0 0 0 2px rgba(255, 245, 222, 0.28);
+}
+
+.moe-room.has-peek summary::before {
+  content: "•ᴗ•";
+  position: absolute;
+  top: -22px;
+  right: 13px;
+  padding: 4px 8px 7px;
+  border: 2px solid var(--moe-deep-green);
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  background: #d8b861;
+  color: var(--moe-deep-green);
+  font-family: var(--mono);
+  font-size: 13px;
+  transition: top 0.28s ease;
+}
+
+.moe-room summary:hover,
+.moe-room summary:focus-visible {
+  filter: saturate(1.08) brightness(1.05);
+  outline: none;
+  transform: perspective(850px) rotateY(-4deg) translateY(-3px);
+  box-shadow:
+    inset 0 0 0 7px rgba(48, 36, 28, 0.15),
+    7px 7px 0 rgba(48, 42, 36, 0.2);
+}
+
+.moe-room.has-peek summary:hover::before,
+.moe-room.has-peek summary:focus-visible::before,
+.moe-room[open].has-peek summary::before {
+  top: 0;
+}
+
+.moe-room[open] summary {
+  background:
+    linear-gradient(90deg, transparent 48%, rgba(255, 255, 255, 0.25) 49% 51%, transparent 52%),
+    linear-gradient(#b08b58, #8a6747);
+  transform: perspective(850px) rotateY(-3deg);
+}
+
+.moe-room-number {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  min-width: 30px;
+  padding: 2px 6px;
+  border: 1px solid #3d3127;
+  background: #f2dfb4;
+  color: var(--moe-bordeaux);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  text-align: center;
+  transform: rotate(-2deg);
+}
+
+.moe-room-icon {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.moe-room summary strong {
+  display: block;
+  min-height: 2.7em;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(14px, 1.15vw, 18px);
+  line-height: 1.35;
+}
+
+.moe-room summary small {
+  display: block;
+  margin-top: 8px;
+  color: #eadfc9;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.moe-room-detail {
+  margin-top: 7px;
+  padding: 11px 12px;
+  border: 1px dashed rgba(41, 72, 59, 0.62);
+  background: rgba(255, 250, 237, 0.9);
+  box-shadow: 2px 3px 0 rgba(48, 42, 36, 0.11);
+  animation: moe-room-open 0.38s ease both;
+}
+
+.moe-room-detail p {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.moe-room-detail span,
+.moe-room-detail a {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--moe-bordeaux);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.moe-room-detail a {
+  border-bottom: 1px solid currentColor;
+}
+
+.moe-room-sign {
+  display: block;
+  width: 100%;
+  max-height: 48px;
+  margin: 0 0 8px;
+  object-fit: contain;
+}
+
+.moe-room.is-museum summary {
+  background:
+    linear-gradient(90deg, transparent 48%, rgba(255, 255, 255, 0.16) 49% 51%, transparent 52%),
+    linear-gradient(#49695a, #2f4f42);
+}
+
+.moe-room.is-vacancy summary {
+  border-color: #7a3a2e;
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0 11px, transparent 11px 22px),
+    var(--moe-gold);
+  color: #3e2f24;
+}
+
+.moe-room.is-vacancy summary small {
+  color: #62452f;
+}
+
+.moe-room.is-vacancy summary::after {
+  background: var(--moe-bordeaux);
+}
+
+.moe-room.is-vacancy .moe-room-number {
+  background: var(--moe-bordeaux);
+  color: #fff5de;
+}
+
+.moe-room.is-preparing summary {
+  border-style: dashed;
+  background:
+    linear-gradient(rgba(244, 234, 212, 0.72), rgba(244, 234, 212, 0.72)),
+    linear-gradient(#816b55, #685443);
+  color: #4a4035;
+}
+
+.moe-room.is-preparing summary small {
+  color: #665b50;
+}
+
+.moe-room.is-preparing summary::after {
+  opacity: 0.45;
+}
+
+.moe-building-ground {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 43px;
+  padding: 8px 4%;
+  color: #52645a;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.moe-building-ground i {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #58725e;
+  border-radius: 55% 45% 50% 50%;
+  background: #9eb27d;
+}
+
+.moe-building-ground b {
+  margin: 0 auto;
+  color: var(--moe-bordeaux);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  transform: rotate(-1deg);
+}
+
+@keyframes moe-room-open {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .moe-explorer {
+    grid-template-columns: minmax(245px, 0.55fr) minmax(0, 1.45fr);
+  }
+
+  .moe-floor {
+    grid-template-columns: 106px minmax(0, 1fr);
+  }
+
+  .moe-floor-sign {
+    padding: 12px 9px;
+  }
+
+  .moe-floor-sign strong {
+    font-size: 14px;
+  }
+
+  .moe-floor-rooms {
+    gap: 7px;
+    padding: 10px;
+  }
+
+  .moe-room summary {
+    min-height: 136px;
+    padding: 36px 10px 12px;
+  }
+
+  .moe-room summary strong {
+    font-size: 13px;
+  }
+
+  .moe-explorer-visuals {
+    grid-template-columns: 1fr;
+  }
+
+  .moe-explorer-photo img,
+  .moe-explorer-map img {
+    height: 135px;
+  }
+}
+
+@media (max-width: 800px) {
+  .moe-building::before {
+    content: "MOE / 3 FLOORS / TAP A DOOR";
+  }
+
+  .moe-explorer {
+    display: block;
+    border-width: 1px;
+    box-shadow: 6px 7px 0 rgba(48, 42, 36, 0.18);
+  }
+
+  .moe-explorer-guide {
+    padding: 24px 20px 27px;
+  }
+
+  .moe-explorer-guide h3 {
+    font-size: 34px;
+  }
+
+  .moe-explorer-help {
+    margin-bottom: 18px;
+    font-size: 12px;
+  }
+
+  .moe-explorer-visuals {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 9px;
+  }
+
+  .moe-explorer-photo,
+  .moe-explorer-map {
+    box-shadow: 3px 4px 0 rgba(16, 30, 24, 0.3);
+  }
+
+  .moe-explorer-photo img,
+  .moe-explorer-map img {
+    height: 145px;
+  }
+
+  .moe-explorer-photo img {
+    aspect-ratio: auto;
+  }
+
+  .moe-explorer-map img {
+    object-fit: contain;
+  }
+
+  .moe-explorer-photo figcaption,
+  .moe-explorer-map span {
+    min-height: 42px;
+    padding: 6px 7px;
+    font-size: 7px;
+    line-height: 1.45;
+  }
+
+  .moe-explorer-note {
+    margin-top: 16px;
+  }
+
+  .moe-floor-stack {
+    padding: 34px 10px 14px;
+  }
+
+  .moe-floor-stack::before {
+    top: 10px;
+    height: 17px;
+  }
+
+  .moe-floor {
+    display: block;
+    border-width: 1px;
+    border-bottom-width: 6px;
+  }
+
+  .moe-floor-sign {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 11px;
+    padding: 10px 12px;
+    border-right: 0;
+    border-bottom: 1px solid var(--moe-deep-green);
+  }
+
+  .moe-floor-sign > span {
+    grid-row: 1 / span 2;
+    align-self: center;
+    margin: 0;
+  }
+
+  .moe-floor-sign strong {
+    align-self: end;
+    font-size: 15px;
+  }
+
+  .moe-floor-sign small {
+    margin: 1px 0 0;
+    font-size: 8px;
+  }
+
+  .moe-floor-rooms,
+  .moe-floor-rooms-three,
+  .moe-floor-rooms-four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .moe-room summary {
+    min-height: 142px;
+    padding: 39px 11px 13px;
+  }
+
+  .moe-room summary strong {
+    font-size: 14px;
+  }
+
+  .moe-room summary small {
+    font-size: 8px;
+  }
+
+  .moe-room[open] {
+    grid-column: 1 / -1;
+  }
+
+  .moe-room[open] summary {
+    min-height: 115px;
+  }
+
+  .moe-room-detail {
+    padding: 13px 14px;
+  }
+
+  .moe-room-detail p {
+    font-size: 11px;
+  }
+
+  .moe-building-ground {
+    padding-inline: 8px;
+  }
+
+  .moe-building-ground span {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .moe-explorer-visuals {
+    grid-template-columns: 1fr;
+  }
+
+  .moe-explorer-photo img,
+  .moe-explorer-map img {
+    height: auto;
+    max-height: 220px;
+  }
+
+  .moe-floor-rooms,
+  .moe-floor-rooms-three,
+  .moe-floor-rooms-four {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moe-room summary,
+  .moe-room-detail,
+  .moe-explorer-map {
+    animation: none;
+    transition: none;
+  }
+}
