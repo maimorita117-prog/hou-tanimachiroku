@@ -1,0 +1,489 @@
+.map-card {
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #29483b;
+  border-radius: 22px 18px 24px 17px;
+  background: #efe2c1;
+  box-shadow:
+    0 0 0 7px rgba(224, 193, 112, 0.42),
+    11px 13px 0 rgba(19, 42, 33, 0.28);
+  transform: rotate(-0.12deg);
+}
+
+.map-card::before,
+.map-card::after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  width: 84px;
+  height: 25px;
+  background: rgba(223, 190, 111, 0.72);
+  box-shadow: 0 1px 0 rgba(88, 67, 40, 0.15);
+  pointer-events: none;
+}
+
+.map-card::before {
+  top: 8px;
+  left: -20px;
+  transform: rotate(-35deg);
+}
+
+.map-card::after {
+  right: -19px;
+  bottom: 11px;
+  transform: rotate(-37deg);
+}
+
+.map-tools {
+  position: relative;
+  min-height: 88px;
+  padding: 14px 24px;
+  border-bottom: 2px dashed rgba(96, 65, 42, 0.42);
+  background:
+    radial-gradient(circle at 18% 28%, rgba(100, 69, 43, 0.08) 0 0.8px, transparent 0.9px),
+    linear-gradient(90deg, rgba(184, 65, 45, 0.06), transparent 42%),
+    #f5ead1;
+  background-size: 6px 6px, auto, auto;
+}
+
+.map-tools > span {
+  position: relative;
+  display: block;
+  padding: 8px 16px 7px 19px;
+  border-left: 5px solid #a53f30;
+  color: #29483b;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  transform: rotate(-0.8deg);
+}
+
+.map-tools > span::before {
+  content: "TANIMACHI 6 / TOWN WALK";
+  display: block;
+  margin-bottom: 3px;
+  color: #a53f30;
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.map-tools .map-google-link {
+  border: 2px solid #29483b;
+  border-radius: 12px 17px 13px 16px;
+  background: #29483b;
+  box-shadow:
+    inset 0 0 0 2px rgba(244, 234, 212, 0.18),
+    4px 5px 0 rgba(48, 73, 62, 0.22);
+  transform: rotate(0.8deg);
+}
+
+.map-tools .map-google-link:hover {
+  background: #a53f30;
+  transform: translate(-1px, -2px) rotate(-0.8deg);
+}
+
+.map-canvas {
+  border-top: 1px solid rgba(49, 68, 57, 0.22);
+  border-bottom: 1px solid rgba(49, 68, 57, 0.22);
+  background:
+    linear-gradient(rgba(255, 252, 240, 0.38), rgba(255, 252, 240, 0.38)),
+    radial-gradient(circle at 17% 24%, rgba(106, 76, 44, 0.11) 0 0.8px, transparent 1px),
+    radial-gradient(circle at 72% 66%, rgba(90, 72, 48, 0.07) 0 0.7px, transparent 0.9px),
+    repeating-linear-gradient(3deg, transparent 0 24px, rgba(83, 102, 78, 0.025) 24px 25px),
+    #f1e8cf;
+  background-size: auto, 6px 6px, 9px 9px, auto, auto;
+  box-shadow: inset 0 0 42px rgba(101, 78, 45, 0.14);
+}
+
+.map-canvas::before {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #29483b;
+  background: #f8efd8;
+  box-shadow: 3px 3px 0 rgba(41, 72, 59, 0.16);
+  color: #a53f30;
+  font-size: 10px;
+}
+
+.map-canvas::after {
+  left: 34px;
+  top: 63px;
+  width: 18px;
+  height: 2px;
+  background: #a53f30;
+}
+
+.map-line-layer::before {
+  content: "お店をタップしてね  ☞";
+  top: auto;
+  right: 4%;
+  bottom: 8%;
+  padding: 6px 11px;
+  border: 1px dashed rgba(165, 63, 48, 0.62);
+  border-radius: 50% 46% 52% 43%;
+  background: rgba(250, 239, 214, 0.84);
+  color: #a53f30;
+  font-size: 12px;
+  opacity: 1;
+  transform: rotate(-3deg);
+}
+
+.map-line-layer::after {
+  content: "✿  ⌂  ♡";
+  bottom: 4%;
+  left: 6%;
+  color: #66835d;
+  font-size: 20px;
+  opacity: 0.72;
+}
+
+.map-line {
+  opacity: 0.82;
+  filter: drop-shadow(0.8px 0.8px 0 rgba(255, 252, 238, 0.9));
+}
+
+.map-line-nagahori {
+  color: #3f574a;
+  border-top-width: 3px;
+}
+
+.map-line-rail {
+  color: #b64d3a;
+  border-top-width: 3px;
+}
+
+.map-line-kannonzaka,
+.map-line-zenan,
+.map-line-higashikoya,
+.map-line-local-a,
+.map-line-local-b,
+.map-line-local-c,
+.map-line-shopping,
+.map-line-tanimachi {
+  color: #746d55;
+}
+
+.map-schematic .block {
+  fill: rgba(214, 191, 137, 0.18);
+  stroke: rgba(88, 76, 53, 0.34);
+  stroke-width: 1.4px;
+  stroke-dasharray: 8 5;
+  rx: 8px;
+}
+
+.map-schematic .block:nth-child(2n) {
+  fill: rgba(128, 158, 111, 0.12);
+}
+
+.map-schematic .park {
+  fill: rgba(166, 190, 126, 0.56);
+  stroke: #56704f;
+  stroke-width: 2.5px;
+  stroke-dasharray: 9 5;
+  filter: drop-shadow(3px 4px 0 rgba(58, 79, 56, 0.14));
+}
+
+.map-schematic .tree-leaf {
+  fill: #668d5d;
+  stroke: #355b3d;
+  stroke-width: 2.4px;
+}
+
+.map-schematic .leaf-light {
+  fill: #a8bd79;
+}
+
+.map-schematic .label,
+.map-schematic .landmark-label,
+.map-schematic .sub-label,
+.map-schematic .station-text {
+  font-family: "Yu Kyokasho", "UD Digi Kyokasho NP-R", "Yu Mincho", serif;
+}
+
+.map-schematic .landmark-label {
+  fill: #23493a;
+  stroke: rgba(248, 239, 216, 0.96);
+  stroke-width: 5px;
+  letter-spacing: 0.14em;
+  filter: drop-shadow(1px 2px 0 rgba(73, 57, 36, 0.1));
+}
+
+.map-schematic .park-label,
+.map-schematic .park-label.landmark-label {
+  fill: #315f3d;
+  stroke: rgba(240, 234, 203, 0.96);
+}
+
+.map-schematic .station {
+  fill: #f3e1b8;
+  stroke: #a53f30;
+  stroke-width: 2.5px;
+  stroke-dasharray: 9 3;
+  filter: drop-shadow(4px 4px 0 rgba(52, 72, 59, 0.16));
+}
+
+.map-schematic .station-text {
+  fill: #29483b;
+  stroke: #f3e1b8;
+  stroke-width: 3px;
+  font-weight: 800;
+}
+
+.map-schematic .station-code {
+  fill: #a53f30;
+}
+
+.map-canvas .map-pin {
+  width: 54px;
+  height: 54px;
+  overflow: visible;
+  border: 3px solid #a53f30;
+  border-radius: 50% 46% 52% 47%;
+  background: #f7e8c6;
+  color: #a53f30;
+  box-shadow:
+    inset 0 0 0 3px rgba(165, 63, 48, 0.1),
+    4px 5px 0 rgba(53, 49, 39, 0.28);
+  transform: translate(-50%, -50%) rotate(2deg);
+}
+
+.map-canvas .map-pin::before {
+  content: "";
+  position: absolute;
+  right: 1px;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  border-right: 3px solid #a53f30;
+  border-bottom: 3px solid #a53f30;
+  background: #f7e8c6;
+  transform: rotate(34deg);
+}
+
+.map-canvas .map-pin span {
+  top: -19px;
+  left: -5px;
+  min-width: 29px;
+  padding: 2px 5px;
+  border: 1px solid #29483b;
+  border-radius: 3px;
+  background: #29483b;
+  color: #fff7e7;
+  font-size: 8px;
+  line-height: 1.2;
+  transform: rotate(-5deg);
+}
+
+.map-canvas .map-pin b {
+  position: relative;
+  z-index: 1;
+  color: inherit;
+  font-family: "Yu Kyokasho", "UD Digi Kyokasho NP-R", "Yu Mincho", serif;
+  font-size: 19px;
+}
+
+.map-canvas .map-pin:hover,
+.map-canvas .map-pin.selected {
+  border-color: #29483b;
+  background: #a53f30;
+  color: #fff6df;
+  transform: translate(-50%, -50%) scale(1.1) rotate(-5deg);
+}
+
+.map-canvas .map-pin:hover::before,
+.map-canvas .map-pin.selected::before {
+  border-color: #29483b;
+  background: #a53f30;
+}
+
+.map-canvas .pin-moe {
+  width: 70px;
+  height: 70px;
+  border-color: #29483b;
+  background: #efd996;
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 248, 222, 0.65),
+    5px 6px 0 rgba(53, 49, 39, 0.3);
+}
+
+.map-canvas .pin-moe::before {
+  border-color: #29483b;
+  background: #efd996;
+}
+
+.map-canvas .pin-moe::after {
+  border: 1px solid #a53f30;
+  border-radius: 4px;
+  background: #a53f30;
+  color: #fff6df;
+  box-shadow: 2px 2px 0 rgba(53, 49, 39, 0.18);
+}
+
+.map-canvas .pin-moe:hover,
+.map-canvas .pin-moe.selected,
+.map-canvas .pin-moe:hover::before,
+.map-canvas .pin-moe.selected::before {
+  background: #f4dda0;
+}
+
+.map-canvas .map-popup {
+  border: 2px solid #29483b;
+  border-radius: 16px 12px 18px 13px;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(100, 69, 43, 0.08) 0 0.8px, transparent 0.9px),
+    #f6e8c7;
+  background-size: 6px 6px;
+  box-shadow: 8px 9px 0 rgba(30, 54, 44, 0.26);
+  transform: rotate(-0.5deg);
+}
+
+.map-canvas .map-popup::before {
+  content: "まち歩きメモ";
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 3px 8px;
+  border: 1px solid #a53f30;
+  color: #a53f30;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  transform: rotate(-2deg);
+}
+
+.map-legend {
+  min-height: 62px;
+  padding: 14px 22px;
+  border-top: 2px dashed rgba(96, 65, 42, 0.42);
+  background:
+    linear-gradient(90deg, rgba(165, 63, 48, 0.06), transparent 30%),
+    #f4e8ce;
+}
+
+.map-legend span {
+  padding: 3px 0;
+  color: #29483b;
+}
+
+.map-legend .dot {
+  box-shadow: 0 0 0 2px rgba(255, 249, 232, 0.9);
+}
+
+@media (max-width: 800px) {
+  .map-card {
+    border-width: 2px;
+    border-radius: 16px 13px 18px 14px;
+    box-shadow:
+      0 0 0 4px rgba(224, 193, 112, 0.36),
+      6px 7px 0 rgba(19, 42, 33, 0.24);
+  }
+
+  .map-card::before,
+  .map-card::after {
+    width: 58px;
+    height: 18px;
+  }
+
+  .map-tools {
+    min-height: 0;
+    padding: 13px 14px;
+  }
+
+  .map-tools > span {
+    padding: 5px 8px 5px 11px;
+    border-left-width: 4px;
+    font-size: 15px;
+  }
+
+  .map-tools > span::before {
+    font-size: 6px;
+  }
+
+  .map-tools .map-google-link {
+    margin-top: 10px;
+    border-radius: 10px 13px 11px 14px;
+  }
+
+  .map-line-layer::before {
+    right: 3%;
+    bottom: 5%;
+    padding: 4px 7px;
+    font-size: 9px;
+  }
+
+  .map-line-layer::after {
+    left: 4%;
+    bottom: 3%;
+    font-size: 15px;
+  }
+
+  .map-schematic .block {
+    stroke-width: 1px;
+    stroke-dasharray: 6 5;
+  }
+
+  .map-canvas .map-pin {
+    width: 36px;
+    height: 36px;
+    border-width: 2px;
+    box-shadow:
+      inset 0 0 0 2px rgba(165, 63, 48, 0.1),
+      3px 3px 0 rgba(53, 49, 39, 0.24);
+  }
+
+  .map-canvas .map-pin::before {
+    right: 0;
+    bottom: -6px;
+    width: 10px;
+    height: 10px;
+    border-width: 0 2px 2px 0;
+  }
+
+  .map-canvas .map-pin b {
+    font-size: 14px;
+  }
+
+  .map-canvas .map-pin span {
+    top: -15px;
+    left: -4px;
+    min-width: 23px;
+    padding: 1px 3px;
+    font-size: 6px;
+  }
+
+  .map-canvas .pin-moe {
+    width: 48px;
+    height: 48px;
+  }
+
+  .map-canvas .pin-moe .moe-logo-pin,
+  .map-canvas .pin-moe .moe-inline-logo img {
+    width: 31px !important;
+    max-width: 31px !important;
+  }
+
+  .map-canvas .pin-moe::after {
+    right: -22px;
+    bottom: -10px;
+    font-size: 7px;
+  }
+
+  .map-canvas .map-popup {
+    border-radius: 13px 10px 15px 11px;
+    box-shadow: 5px 6px 0 rgba(30, 54, 44, 0.24);
+  }
+
+  .map-legend {
+    padding: 12px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-canvas .map-pin,
+  .map-tools .map-google-link {
+    transition: none;
+  }
+}

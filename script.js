@@ -234,6 +234,40 @@ function removeEditorialLabels() {
   ].forEach((selector) => document.querySelector(selector)?.remove());
 }
 
+function setupMoeFloorTabs() {
+  const tabs = [...document.querySelectorAll('[data-moe-floor]')];
+  const floors = [...document.querySelectorAll('.moe-floor')];
+  if (!tabs.length || !floors.length) return;
+
+  const selectFloor = (floorNumber) => {
+    tabs.forEach((tab) => {
+      const selected = tab.dataset.moeFloor === floorNumber;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
+
+    floors.forEach((floor) => {
+      const selected = floor.classList.contains(`moe-floor-${floorNumber}`);
+      floor.classList.toggle('is-floor-active', selected);
+    });
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectFloor(tab.dataset.moeFloor));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+      event.preventDefault();
+      const direction = event.key === 'ArrowRight' ? 1 : -1;
+      const nextTab = tabs[(index + direction + tabs.length) % tabs.length];
+      nextTab.focus();
+      selectFloor(nextTab.dataset.moeFloor);
+    });
+  });
+
+  const initialFloor = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true')?.dataset.moeFloor ?? '1';
+  selectFloor(initialFloor);
+}
+
 function closeOpening() {
   if (!opening) return;
   window.clearTimeout(openingTimer);
@@ -288,5 +322,6 @@ setupTenantDirectory();
 addMoeBuildingPhoto();
 addNaokiSign();
 removeEditorialLabels();
+setupMoeFloorTabs();
 if (window.location.hash === '#kanmiho') openShopFeature();
 playOpening();
