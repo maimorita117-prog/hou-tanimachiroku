@@ -21,12 +21,12 @@
 .hero-slide-memorial {
   background-image: url('hero-naoki-memorial.jpg');
   background-color: #e9e5d5;
-  animation: hero-slide-memorial 30s ease-in-out infinite;
+  animation: hero-slide-memorial 8s ease-in-out infinite;
 }
 
 .hero-slide-machiya {
   background-image: url('hero-street-machiya.jpg');
-  animation: hero-slide-machiya 30s ease-in-out infinite;
+  animation: hero-slide-machiya 8s ease-in-out infinite;
 }
 
 .hero-paper-turn {
@@ -51,7 +51,7 @@
     -9px -7px 18px rgba(42, 49, 42, 0.32);
   pointer-events: none;
   will-change: opacity, transform;
-  animation: hero-paper-turn 30s ease-in-out infinite;
+  animation: hero-paper-turn 8s ease-in-out infinite;
 }
 
 .hero-street-wash {
