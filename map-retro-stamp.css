@@ -372,6 +372,18 @@
   box-shadow: 0 0 0 2px rgba(255, 249, 232, 0.9);
 }
 
+@media (min-width: 1001px) {
+  .map-card {
+    width: min(100%, 1080px);
+    margin-inline: auto;
+  }
+
+  .map-canvas {
+    height: auto;
+    aspect-ratio: 1200 / 650;
+  }
+}
+
 @media (max-width: 800px) {
   .map-card {
     border-width: 2px;
