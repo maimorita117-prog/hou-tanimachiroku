@@ -40,7 +40,7 @@
 
 .hero-slide-memorial {
   background-image: url('hero-naoki-memorial.jpg');
-  background-size: contain;
+  background-size: cover;
   background-color: #e9e5d5;
   animation: hero-slide-memorial 18s ease-in-out infinite;
 }
@@ -76,19 +76,25 @@
 
 @keyframes hero-slide-memorial {
   0%,
-  40% {
+  38% {
     opacity: 1;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     transform: scale(1.01);
   }
 
-  47% {
+  43% {
     opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 72%, 72% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
     transform: scale(1.025) rotate(-0.12deg);
   }
 
-  50%,
+  49% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 12%, 12% 100%, 0 100%);
+    transform: scale(1.05) rotate(-0.18deg);
+  }
+
+  52%,
   92% {
     opacity: 0;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
@@ -105,23 +111,29 @@
 
 @keyframes hero-slide-machiya {
   0%,
-  40% {
+  38% {
     opacity: 0;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     transform: scale(1.05);
   }
 
-  42%,
-  90% {
+  40%,
+  88% {
     opacity: 1;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     transform: scale(1.03);
   }
 
-  97% {
+  93% {
     opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 72%, 72% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
     transform: scale(1.05) rotate(-0.12deg);
+  }
+
+  99% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 12%, 12% 100%, 0 100%);
+    transform: scale(1.07) rotate(-0.18deg);
   }
 
   100% {
@@ -133,19 +145,19 @@
 
 @keyframes hero-paper-corner-first {
   0%,
-  40%,
-  50%,
+  38%,
+  52%,
   100% {
     opacity: 0;
     transform: scale(0);
   }
 
-  42% {
+  40% {
     opacity: 0.92;
     transform: scale(0.08);
   }
 
-  48% {
+  50% {
     opacity: 0.94;
     transform: scale(1);
   }
@@ -153,18 +165,18 @@
 
 @keyframes hero-paper-corner-second {
   0%,
-  90%,
+  88%,
   100% {
     opacity: 0;
     transform: scale(0);
   }
 
-  92% {
+  90% {
     opacity: 0.92;
     transform: scale(0.08);
   }
 
-  98% {
+  99% {
     opacity: 0.94;
     transform: scale(1);
   }
