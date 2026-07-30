@@ -651,3 +651,30 @@
     margin-right: 0;
   }
 }
+
+@media (max-width: 600px) {
+  .map-canvas {
+    height: clamp(450px, 120vw, 500px);
+  }
+
+  .map-tools {
+    gap: 8px;
+    padding: 12px 14px;
+  }
+
+  .map-tools > span {
+    display: block;
+    max-width: 100%;
+    font-size: 10px;
+  }
+
+  .map-tools .map-google-link {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+
+  .map-line-layer::before,
+  .map-line-layer::after {
+    font-size: 14px;
+  }
+}
