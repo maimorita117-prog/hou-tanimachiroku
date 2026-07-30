@@ -101,9 +101,160 @@
   display: none;
 }
 
-.map-schematic {
+.map-line-layer {
   position: absolute;
   z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.map-line-layer::before,
+.map-line-layer::after {
+  position: absolute;
+  color: #8da06d;
+  font-family: "Yu Kyokasho", "UD Digi Kyokasho NP-R", cursive;
+  font-size: 18px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.map-line-layer::before {
+  content: "✿  ·  ˚";
+  top: 18%;
+  right: 6%;
+  transform: rotate(8deg);
+}
+
+.map-line-layer::after {
+  content: "⌇  ♡";
+  bottom: 12%;
+  left: 7%;
+  color: #b6795f;
+  transform: rotate(-8deg);
+}
+
+.map-line {
+  position: absolute;
+  display: block;
+  color: #4a4b43;
+  border-color: currentColor;
+  border-style: solid;
+  border-width: 0;
+  border-radius: 999px;
+  opacity: 0.96;
+}
+
+.map-line::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.8;
+}
+
+.map-line-rail {
+  top: 4.4%;
+  left: -1%;
+  width: 102%;
+  color: #b45d46;
+  border-top-width: 2px;
+  border-top-style: dotted;
+  transform: rotate(1.8deg);
+}
+
+.map-line-nagahori {
+  top: 7.5%;
+  left: -1%;
+  width: 102%;
+  color: #465345;
+  border-top-width: 2px;
+  transform: rotate(1.75deg);
+}
+
+.map-line-tanimachi,
+.map-line-zenan,
+.map-line-higashikoya,
+.map-line-local-c {
+  border-left-width: 1.7px;
+}
+
+.map-line-tanimachi {
+  top: -2%;
+  left: 90.6%;
+  height: 104%;
+}
+
+.map-line-kannonzaka {
+  top: 29.8%;
+  left: 5.8%;
+  width: 72.5%;
+  color: #68715d;
+  border-top-width: 1.7px;
+  transform: rotate(1.25deg);
+}
+
+.map-line-zenan {
+  top: 14%;
+  left: 37.9%;
+  height: 64%;
+  color: #7f775d;
+  transform: rotate(0.15deg);
+}
+
+.map-line-higashikoya {
+  top: 34%;
+  left: 19.6%;
+  height: 48%;
+  color: #7d8068;
+  transform: rotate(-0.2deg);
+}
+
+.map-line-local-a,
+.map-line-local-b,
+.map-line-shopping {
+  border-top-width: 1.5px;
+}
+
+.map-line-local-a {
+  top: 53.2%;
+  left: 4.6%;
+  width: 31.3%;
+  color: #8f896e;
+  transform: rotate(0.35deg);
+}
+
+.map-line-local-b {
+  top: 71.4%;
+  left: 26.3%;
+  width: 61.4%;
+  color: #777b65;
+  transform: rotate(-0.18deg);
+}
+
+.map-line-local-c {
+  top: 33.7%;
+  left: 66.2%;
+  height: 34%;
+  color: #8c8069;
+  transform: rotate(0.3deg);
+}
+
+.map-line-shopping {
+  top: 89.2%;
+  left: 2.9%;
+  width: 83%;
+  color: #8b6049;
+  border-top-width: 1.8px;
+  transform: rotate(-0.25deg);
+}
+
+.map-schematic {
+  position: absolute;
+  z-index: 2;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -112,72 +263,33 @@
 }
 
 .map-schematic .block {
-  fill: rgba(255, 253, 247, 0.5);
-  stroke: rgba(74, 73, 62, 0.55);
-  stroke-width: 1.25;
-  stroke-dasharray: 8 6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+  fill: none;
+  stroke: none;
 }
 
 .map-schematic .road {
   position: static !important;
   background: none !important;
-  fill: rgba(255, 253, 246, 0.91);
-  stroke: #45483f;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+  fill: none;
+  stroke: none;
   transform: none !important;
 }
 
-.map-schematic .main-road {
-  fill: rgba(255, 252, 243, 0.96);
-  stroke-width: 2.1;
-}
-
-.map-schematic .kannonzaka {
-  fill: rgba(255, 253, 247, 0.94);
-  stroke: #55584c;
-  stroke-width: 1.7;
-}
-
-.map-schematic .local-road {
-  fill: rgba(252, 249, 240, 0.9);
-  stroke: rgba(69, 72, 63, 0.86);
-  stroke-width: 1.35;
-}
-
 .map-schematic .higashikoya-line {
-  fill: none;
-  stroke: #fbf8ef;
-  stroke-width: 35;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-  paint-order: stroke;
-  filter: drop-shadow(1px 0 0 #56594e) drop-shadow(-1px 0 0 #56594e);
+  stroke: none;
 }
 
 .map-schematic .shopping-street {
-  fill: rgba(255, 251, 239, 0.98);
-  stroke: #4e5146;
-  stroke-width: 1.8;
+  fill: none;
+  stroke: none;
 }
 
 .map-schematic .park {
   position: static !important;
   padding: 0;
   clip-path: none;
-  fill: #d9e6c8;
-  stroke: #46704d;
-  stroke-width: 2;
-  stroke-dasharray: 7 4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+  fill: rgba(183, 213, 164, 0.3);
+  stroke: none;
 }
 
 .map-schematic .tree-leaf {
@@ -206,7 +318,7 @@
 .map-schematic .label {
   fill: #313f37;
   stroke-width: 3px;
-  font-family: "Yu Kyokasho", "UD Digi Kyokasho NP-R", "Klee One", "Yu Mincho", serif;
+  font-family: "Klee One", "Hachi Maru Pop", "Yu Kyokasho", "UD Digi Kyokasho NP-R", "Yu Mincho", cursive;
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 0.07em;
@@ -231,16 +343,14 @@
 .map-schematic .sub-label {
   fill: #596157;
   stroke-width: 2.5px;
-  font-family: "Yu Kyokasho", "UD Digi Kyokasho NP-R", var(--sans);
+  font-family: "Klee One", "Hachi Maru Pop", "Yu Kyokasho", "UD Digi Kyokasho NP-R", var(--sans);
   font-size: 12px;
   letter-spacing: 0.04em;
 }
 
 .map-schematic .station {
-  fill: rgba(255, 253, 247, 0.96);
-  stroke: #3c6380;
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
+  fill: none;
+  stroke: none;
 }
 
 .map-schematic .station-text {

@@ -1,5 +1,3 @@
 .map-schematic .shopping-street {
-  transform-box: fill-box;
-  transform-origin: center;
-  transform: scaleY(0.38) !important;
+  transform: none !important;
 }
