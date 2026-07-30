@@ -1,1 +1,543 @@
-.map-canvas{height:620px;overflow:hidden;background:#d8cfac}.map-paper,.map-route{display:none}.map-schematic{position:absolute;inset:0;width:100%;height:100%;background:#d8cfac}.map-schematic .block{fill:#c8bc96;stroke:#afa37f;stroke-width:1.25}.map-schematic .road{position:static!important;background:none!important;stroke:#c8bc96;stroke-width:1.5;transform:none!important}.map-schematic .main-road{fill:#f5edd9}.map-schematic .kannonzaka{fill:#f1e7d1;stroke:#b8aa89;stroke-width:2}.map-schematic .local-road{fill:#eee5cf}.map-schematic .higashikoya-line{fill:none;stroke:#eee5cf;stroke-width:40;stroke-linecap:round;stroke-linejoin:round}.map-schematic .shopping-street{fill:#fff8e8;stroke:#aa9d7c;stroke-width:2}.map-schematic .park{position:static!important;padding:0;clip-path:none;fill:#aabf88;stroke:#72845f;stroke-width:2}.map-schematic .tree-leaf{fill:#63815f;stroke:#4c684d;stroke-width:2}.map-schematic .leaf-light{fill:#90aa74}.map-schematic .tree-trunk{fill:#815f3c}.map-schematic .label{fill:#405040;font-family:'Yu Mincho','Hiragino Mincho ProN',serif;font-size:22px;font-weight:700;letter-spacing:.08em}.map-schematic .landmark-label{fill:#1f4134;font-size:27px;font-weight:900;paint-order:stroke;stroke:#f7f0dc;stroke-width:5px;stroke-linejoin:round}.map-schematic .park-label{font-size:17px;letter-spacing:.04em}.map-schematic .park-label.landmark-label{font-size:22px;stroke-width:4px}.map-schematic .sub-label{fill:#5b664f;font-family:var(--mono);font-size:13px;letter-spacing:.07em}.map-schematic .station{fill:#30493e;stroke:#f4ead4;stroke-width:4}.map-schematic .station-text{fill:#f4ead4;font-family:var(--sans);font-size:17px;font-weight:900;text-anchor:middle}.map-schematic .station-code{font-size:13px;letter-spacing:.16em}.map-canvas .map-pin{position:absolute!important;z-index:4;width:52px;height:52px;display:flex!important;align-items:center;justify-content:center;transform:translate(-50%,-50%)}.map-canvas .map-pin:hover,.map-canvas .map-pin.selected{transform:translate(-50%,-50%) scale(1.1) rotate(-5deg)}.map-canvas .pin-moe{left:39%;top:34%;background:#f4ead4;color:#30493e;border:2px solid #30493e}.map-canvas .pin-moe::after{content:"11店";position:absolute;right:-28px;bottom:-12px;padding:3px 5px;background:#a63f2d;color:#fff8e8;font:800 10px/1 var(--sans);letter-spacing:.04em;box-shadow:2px 2px 0 rgba(48,73,62,.18)}.map-canvas .pin-02{left:54%;top:9%}.map-canvas .pin-03{left:34%;top:56%}.map-canvas .pin-04{left:34%;top:65%}.map-canvas .pin-05{left:28%;top:64%}.map-canvas .pin-06{left:24%;top:73%}.map-canvas .pin-07{left:30%;top:70%}.map-canvas .map-pin span{position:absolute!important;top:-20px;left:50%;transform:translateX(-50%);white-space:nowrap}.map-canvas .pin-moe span{font-weight:900}.map-canvas .pin-moe b{display:flex!important;align-items:center;justify-content:center;line-height:0}.map-canvas .pin-moe .moe-logo-pin,.map-canvas .pin-moe .moe-inline-logo img{display:block!important;width:34px!important;height:auto!important;max-width:34px!important;max-height:32px!important;object-fit:contain}.map-canvas .map-popup{z-index:8}.map-tools{justify-content:flex-start;gap:16px;align-items:center}.map-tools>div{display:none}.map-tools .map-google-link{margin-left:auto;display:inline-flex;align-items:center;gap:8px;padding:10px 15px;background:#30493e;color:#fff8e8;border:1px solid #30493e;font-size:12px;font-weight:800;letter-spacing:.06em;text-decoration:none;box-shadow:3px 3px 0 rgba(48,73,62,.2);transition:transform .2s ease,box-shadow .2s ease}.map-tools .map-google-link:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(48,73,62,.2)}.map-legend{gap:22px}.map-legend .dot-vacancy{display:none}@media(max-width:800px){.map-canvas{height:470px}.map-schematic .label{font-size:15px}.map-schematic .landmark-label{font-size:18px;stroke-width:3px}.map-schematic .park-label{font-size:12px}.map-schematic .park-label.landmark-label{font-size:14px;stroke-width:3px}.map-schematic .sub-label{font-size:9px}.map-schematic .station-text{font-size:11px}.map-schematic .station-code{font-size:9px}.map-canvas .map-pin{width:40px;height:40px;font-size:17px}.map-canvas .map-pin span{font-size:8px;top:-16px}.map-canvas .pin-moe{width:48px;height:48px}.map-canvas .pin-moe::after{right:-24px;bottom:-9px;font-size:8px}.map-canvas .pin-moe .moe-logo-pin,.map-canvas .pin-moe .moe-inline-logo img{width:31px!important;max-width:31px!important;max-height:29px!important}.map-tools{gap:10px;flex-wrap:wrap}.map-tools .map-google-link{margin-left:0;padding:8px 11px;font-size:10px}.map-legend{display:flex;gap:8px;flex-wrap:wrap}.map-legend span{margin-right:0}}
+.map-card {
+  overflow: hidden;
+  border: 1px solid rgba(49, 68, 57, 0.72);
+  background: #f7f2e6;
+  box-shadow: 6px 7px 0 rgba(20, 31, 27, 0.22);
+}
+
+.map-tools,
+.map-legend {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(100, 80, 52, 0.06) 0 0.8px, transparent 0.9px),
+    #f4edde;
+  background-size: 6px 6px;
+  color: #38463d;
+  border-color: rgba(49, 68, 57, 0.42);
+}
+
+.map-tools {
+  justify-content: flex-start;
+  gap: 16px;
+  align-items: center;
+}
+
+.map-tools > div {
+  display: none;
+}
+
+.map-tools .map-google-link {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: 1px solid #30493e;
+  border-radius: 999px;
+  background: #30493e;
+  color: #fffaf0;
+  box-shadow: 2px 3px 0 rgba(48, 73, 62, 0.18);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.map-tools .map-google-link:hover {
+  transform: translate(-1px, -1px) rotate(-1deg);
+  box-shadow: 4px 4px 0 rgba(48, 73, 62, 0.18);
+}
+
+.map-canvas {
+  position: relative;
+  height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.24)),
+    radial-gradient(circle at 15% 20%, rgba(107, 82, 47, 0.08) 0 0.65px, transparent 0.8px),
+    radial-gradient(circle at 75% 72%, rgba(107, 82, 47, 0.05) 0 0.55px, transparent 0.75px),
+    #f4efe2;
+  background-size: auto, 5px 5px, 7px 7px, auto;
+}
+
+.map-canvas::before {
+  content: "N\A ↑";
+  white-space: pre;
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 22px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #34453b;
+  border-radius: 50%;
+  background: rgba(250, 246, 235, 0.86);
+  color: #34453b;
+  font: 700 9px/1.05 var(--mono);
+  letter-spacing: 0.08em;
+  text-align: center;
+  transform: rotate(-4deg);
+  pointer-events: none;
+}
+
+.map-canvas::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 31px;
+  top: 54px;
+  width: 16px;
+  height: 1px;
+  background: #34453b;
+  transform: rotate(-9deg);
+  pointer-events: none;
+}
+
+.map-paper,
+.map-route {
+  display: none;
+}
+
+.map-schematic {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: transparent;
+}
+
+.map-schematic .block {
+  fill: rgba(255, 253, 247, 0.5);
+  stroke: rgba(74, 73, 62, 0.55);
+  stroke-width: 1.25;
+  stroke-dasharray: 8 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-schematic .road {
+  position: static !important;
+  background: none !important;
+  fill: rgba(255, 253, 246, 0.91);
+  stroke: #45483f;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transform: none !important;
+}
+
+.map-schematic .main-road {
+  fill: rgba(255, 252, 243, 0.96);
+  stroke-width: 2.1;
+}
+
+.map-schematic .kannonzaka {
+  fill: rgba(255, 253, 247, 0.94);
+  stroke: #55584c;
+  stroke-width: 1.7;
+}
+
+.map-schematic .local-road {
+  fill: rgba(252, 249, 240, 0.9);
+  stroke: rgba(69, 72, 63, 0.86);
+  stroke-width: 1.35;
+}
+
+.map-schematic .higashikoya-line {
+  fill: none;
+  stroke: #fbf8ef;
+  stroke-width: 35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  paint-order: stroke;
+  filter: drop-shadow(1px 0 0 #56594e) drop-shadow(-1px 0 0 #56594e);
+}
+
+.map-schematic .shopping-street {
+  fill: rgba(255, 251, 239, 0.98);
+  stroke: #4e5146;
+  stroke-width: 1.8;
+}
+
+.map-schematic .park {
+  position: static !important;
+  padding: 0;
+  clip-path: none;
+  fill: #d9e6c8;
+  stroke: #46704d;
+  stroke-width: 2;
+  stroke-dasharray: 7 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-schematic .tree-leaf {
+  fill: #6f9a61;
+  stroke: #355b3d;
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-schematic .leaf-light {
+  fill: #a4bd7f;
+}
+
+.map-schematic .tree-trunk {
+  fill: #816044;
+}
+
+.map-schematic .label,
+.map-schematic .sub-label,
+.map-schematic .station-text {
+  paint-order: stroke;
+  stroke: rgba(249, 245, 234, 0.96);
+  stroke-linejoin: round;
+}
+
+.map-schematic .label {
+  fill: #313f37;
+  stroke-width: 3px;
+  font-family: "Yu Kyokasho", "UD Digi Kyokasho NP-R", "Klee One", "Yu Mincho", serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+.map-schematic .landmark-label {
+  fill: #254f3a;
+  stroke-width: 4px;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.map-schematic .park-label,
+.map-schematic .park-label.landmark-label {
+  fill: #315d3c;
+  stroke: rgba(232, 240, 215, 0.96);
+  stroke-width: 3px;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+}
+
+.map-schematic .sub-label {
+  fill: #596157;
+  stroke-width: 2.5px;
+  font-family: "Yu Kyokasho", "UD Digi Kyokasho NP-R", var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.map-schematic .station {
+  fill: rgba(255, 253, 247, 0.96);
+  stroke: #3c6380;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-schematic .station-text {
+  fill: #264d68;
+  stroke-width: 2.5px;
+  font-family: "Yu Kyokasho", "UD Digi Kyokasho NP-R", var(--sans);
+  font-size: 16px;
+  font-weight: 900;
+  text-anchor: middle;
+}
+
+.map-schematic .station-code {
+  fill: #a23f32;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+}
+
+.map-canvas .map-pin {
+  position: absolute !important;
+  z-index: 4;
+  width: 52px;
+  height: 52px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fffaf0;
+  border-radius: 50%;
+  background: #a94131;
+  color: #fffaf0;
+  box-shadow:
+    0 0 0 1.5px #443c32,
+    3px 4px 0 rgba(67, 56, 43, 0.2);
+  transform: translate(-50%, -50%);
+}
+
+.map-canvas .map-pin:hover,
+.map-canvas .map-pin.selected {
+  background: #29483b;
+  transform: translate(-50%, -50%) scale(1.08) rotate(-4deg);
+}
+
+.map-canvas .pin-moe {
+  left: 39%;
+  top: 34%;
+  background: #fffaf0;
+  color: #30493e;
+  border-color: #fffaf0;
+  box-shadow:
+    0 0 0 2px #30493e,
+    3px 4px 0 rgba(48, 73, 62, 0.2);
+}
+
+.map-canvas .pin-moe:hover,
+.map-canvas .pin-moe.selected {
+  background: #f6e7bb;
+}
+
+.map-canvas .pin-moe::after {
+  content: "11店";
+  position: absolute;
+  right: -28px;
+  bottom: -12px;
+  padding: 3px 6px;
+  border-radius: 10px;
+  background: #a63f2d;
+  color: #fff8e8;
+  box-shadow: 1px 2px 0 rgba(48, 73, 62, 0.15);
+  font: 800 10px/1 var(--sans);
+  letter-spacing: 0.04em;
+}
+
+.map-canvas .pin-02 {
+  left: 54%;
+  top: 9%;
+}
+
+.map-canvas .pin-03 {
+  left: 34%;
+  top: 56%;
+}
+
+.map-canvas .pin-04 {
+  left: 34%;
+  top: 65%;
+}
+
+.map-canvas .pin-05 {
+  left: 28%;
+  top: 64%;
+}
+
+.map-canvas .pin-06 {
+  left: 24%;
+  top: 73%;
+}
+
+.map-canvas .pin-07 {
+  left: 30%;
+  top: 70%;
+}
+
+.map-canvas .map-pin span {
+  position: absolute !important;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #4a3c31;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.map-canvas .pin-moe span {
+  color: #29483b;
+  font-weight: 900;
+}
+
+.map-canvas .map-pin b {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: "Yu Kyokasho", "UD Digi Kyokasho NP-R", "Yu Mincho", serif;
+  line-height: 1;
+}
+
+.map-canvas .pin-moe .moe-logo-pin,
+.map-canvas .pin-moe .moe-inline-logo img {
+  display: block !important;
+  width: 34px !important;
+  height: auto !important;
+  max-width: 34px !important;
+  max-height: 32px !important;
+  object-fit: contain;
+}
+
+.map-canvas .map-popup {
+  z-index: 8;
+}
+
+.map-legend {
+  gap: 22px;
+}
+
+.map-legend .dot-vacancy {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .map-canvas {
+    height: 470px;
+  }
+
+  .map-canvas::before {
+    top: 13px;
+    left: 13px;
+    width: 29px;
+    height: 29px;
+    font-size: 8px;
+  }
+
+  .map-canvas::after {
+    left: 20px;
+    top: 42px;
+    width: 14px;
+  }
+
+  .map-schematic .label {
+    font-size: 15px;
+    stroke-width: 2.5px;
+  }
+
+  .map-schematic .landmark-label {
+    font-size: 18px;
+    stroke-width: 3px;
+  }
+
+  .map-schematic .park-label,
+  .map-schematic .park-label.landmark-label {
+    font-size: 14px;
+    stroke-width: 2.5px;
+  }
+
+  .map-schematic .sub-label {
+    font-size: 9px;
+    stroke-width: 2px;
+  }
+
+  .map-schematic .station-text {
+    font-size: 11px;
+    stroke-width: 2px;
+  }
+
+  .map-schematic .station-code {
+    font-size: 9px;
+  }
+
+  .map-schematic .label-nagahori,
+  .map-schematic .label-kannonzaka,
+  .map-schematic .label-shopping {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .map-schematic .label-nagahori {
+    transform: rotate(2deg) scaleX(2.05);
+  }
+
+  .map-schematic .label-kannonzaka {
+    transform: rotate(1deg) scaleX(2.05);
+  }
+
+  .map-schematic .label-shopping {
+    transform: scaleX(1.85);
+  }
+
+  .map-schematic .label-zenan,
+  .map-schematic .label-higashikoya,
+  .map-schematic .label-tanimachi {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(-90deg) scaleX(1.72);
+  }
+
+  .map-schematic .label-park {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scaleX(1.65);
+  }
+
+  .map-schematic .label-karahori {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scaleX(1.7);
+  }
+
+  .map-schematic .station {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scaleX(1.45);
+  }
+
+  .map-schematic .station-text {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scaleX(1.45);
+  }
+
+  .map-canvas .map-pin {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .map-canvas .map-pin span {
+    top: -14px;
+    font-size: 8px;
+  }
+
+  .map-canvas .pin-moe {
+    width: 42px;
+    height: 42px;
+  }
+
+  .map-canvas .pin-moe::after {
+    right: -24px;
+    bottom: -9px;
+    font-size: 8px;
+  }
+
+  .map-canvas .pin-moe .moe-logo-pin,
+  .map-canvas .pin-moe .moe-inline-logo img {
+    width: 28px !important;
+    max-width: 28px !important;
+    max-height: 27px !important;
+  }
+
+  .map-tools {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .map-tools .map-google-link {
+    margin-left: 0;
+    padding: 8px 11px;
+    font-size: 10px;
+  }
+
+  .map-legend {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .map-legend span {
+    margin-right: 0;
+  }
+}
