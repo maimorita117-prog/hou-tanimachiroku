@@ -6,11 +6,8 @@
 .hero-memorial-scene {
   position: absolute;
   z-index: 0;
-  inset: -2%;
-  background: #e8e3d2 url('hero-naoki-memorial.jpg') center center / cover no-repeat;
-  transform: scale(1.02);
-  animation: memorial-scene-breathe 18s ease-in-out infinite alternate;
-  will-change: transform;
+  inset: 0;
+  background: #354b40 url('hero-naoki-memorial.jpg') center center / contain no-repeat;
 }
 
 .hero-memorial .hero-street-wash {
@@ -142,16 +139,6 @@
   z-index: 4;
 }
 
-@keyframes memorial-scene-breathe {
-  from {
-    transform: scale(1.02);
-  }
-
-  to {
-    transform: scale(1.055);
-  }
-}
-
 @keyframes memorial-window-light {
   0%,
   100% {
@@ -174,7 +161,7 @@
     inset: 0;
     background-image: url('hero-naoki-memorial-mobile.jpg');
     background-position: center center;
-    background-size: cover;
+    background-size: contain;
   }
 
   .hero-memorial .hero-street-wash {
@@ -250,7 +237,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-memorial-scene,
   .hero-memorial-lights i {
     animation: none;
   }
