@@ -191,7 +191,8 @@
 
   .hero-memorial-actions {
     right: 6%;
-    bottom: 13%;
+    top: clamp(175px, 25vh, 230px);
+    bottom: auto;
     left: 6%;
     display: grid;
     grid-template-columns: 1.15fr 1fr;
