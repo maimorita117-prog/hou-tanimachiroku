@@ -72,29 +72,15 @@
 
 @keyframes hero-slide-memorial {
   0%,
-  36% {
+  51% {
     opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     transform: scale(1.01);
   }
 
-  43% {
-    opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
-    transform: scale(1.025) rotate(-0.12deg);
-  }
-
-  50% {
-    opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 12%, 12% 100%, 0 100%);
-    transform: scale(1.05) rotate(-0.18deg);
-  }
-
   54%,
-  85% {
+  97% {
     opacity: 0;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
-    transform: scale(1.05) rotate(-0.18deg);
+    transform: scale(1.04);
   }
 
   87%,
@@ -107,36 +93,21 @@
 
 @keyframes hero-slide-machiya {
   0%,
-  36% {
+  52% {
     opacity: 0;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    transform: scale(1.05);
+    transform: scale(1.04);
   }
 
-  38%,
-  83% {
-    opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    transform: scale(1.03);
-  }
-
-  89% {
-    opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
-    transform: scale(1.05) rotate(-0.12deg);
-  }
-
+  54%,
   96% {
     opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 12%, 12% 100%, 0 100%);
-    transform: scale(1.07) rotate(-0.18deg);
+    transform: scale(1.03);
   }
 
   98%,
   100% {
     opacity: 0;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
-    transform: scale(1.07) rotate(-0.18deg);
+    transform: scale(1.04);
   }
 }
 
